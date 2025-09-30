@@ -33,7 +33,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-20 lg:py-28 bg-gradient-elegant">
+    <section id="features" className="section-padding bg-gradient-to-b from-white via-pink-50/20 to-blush-50/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

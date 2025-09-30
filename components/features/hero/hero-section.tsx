@@ -163,7 +163,7 @@ export function HeroSection() {
           >
             <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/95 backdrop-blur-xl text-charcoal font-heading text-sm font-semibold shadow-luxury border border-pink-200/50 ring-1 ring-pink-100/30">
               <Sparkles className="w-5 h-5 mr-3 text-pink animate-pulse-glow" />
-              ✨ Dreamy Nail Art & Feminine Spa Bliss ✨
+              Premium Nail Art & Luxury Spa Experience
             </div>
           </motion.div>
 
@@ -172,7 +172,7 @@ export function HeroSection() {
             variants={staggerItem}
             className="font-display text-display-lg md:text-display-xl lg:text-display-2xl text-charcoal mb-8 leading-tight relative"
           >
-            <span className="relative z-10 font-script text-pink-600">Embrace Your</span>
+            <span className="relative z-10 font-script text-pink-600">Experience Luxury</span>
             <br />
             <motion.span
               className="relative z-10 text-gradient bg-gradient-to-r from-pink-500 via-blush-400 to-rose-400 bg-clip-text text-transparent"
@@ -188,7 +188,7 @@ export function HeroSection() {
                 backgroundSize: '200% 200%',
               }}
             >
-              ✨ Feminine Beauty ✨
+              Nail Artistry
             </motion.span>
             <motion.div 
               className="absolute -inset-2 bg-gradient-to-r from-gold/15 via-gold-400/20 to-gold-600/15 rounded-2xl blur-xl -z-10"

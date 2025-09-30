@@ -16,6 +16,7 @@ export { Tabs } from './tabs'
 export { Tooltip } from './tooltip'
 export { Rating } from './rating'
 export { FormField } from './form-field'
+export { HydrationBoundary } from './hydration-boundary'
 
 // Export types
 export type * from '@/types/components'

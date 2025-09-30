@@ -52,6 +52,7 @@ export const metadata: Metadata = {
   keywords: ['nail salon', 'manicure', 'pedicure', 'nail art', 'luxury spa', 'nail care', 'beauty salon'],
   authors: [{ name: 'Luxury Nail Salon' }],
   creator: 'Luxury Nail Salon',
+  metadataBase: new URL('https://luxurynailsalon.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',

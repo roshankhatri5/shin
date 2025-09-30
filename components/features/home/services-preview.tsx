@@ -14,7 +14,7 @@ export function ServicesPreview() {
   const popularServices = services.filter((service) => service.popular).slice(0, 6)
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-white to-cream-50">
+    <section className="section-padding bg-gradient-to-b from-blush-50/30 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -25,10 +25,10 @@ export function ServicesPreview() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="font-display text-h1 md:text-display-lg text-charcoal mb-4">
-            Our <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">Signature Services</span>
+            Our <span className="bg-gradient-to-r from-pink-400 to-blush-500 bg-clip-text text-transparent">Signature Services</span>
           </h2>
           <p className="text-body-lg text-warmgray-600 leading-relaxed">
-            Discover our most popular treatments, crafted to perfection by our expert technicians with <span className="text-gold-600 font-medium">premium products and techniques.</span>
+            Discover our most popular treatments, crafted to perfection by our expert technicians with <span className="text-pink-600 font-medium">premium products and techniques.</span>
           </p>
         </motion.div>
 
@@ -53,15 +53,15 @@ export function ServicesPreview() {
                   className="bg-gradient-to-br from-white to-warmgray-50/30 rounded-3xl overflow-hidden shadow-soft hover:shadow-elegant transition-all duration-500 h-full flex flex-col border border-gold-200/20 hover:border-gold-300/40 backdrop-blur-sm"
                 >
                   {/* Image */}
-                  <div className="relative h-64 bg-gradient-to-br from-gold-100 to-gold-200 overflow-hidden">
+                  <div className="relative h-64 bg-gradient-to-br from-pink-100 to-blush-200 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-6xl opacity-30 animate-bounce-soft">💅</div>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-gold-300/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-pink-300/20 to-transparent"></div>
                     {service.popular && (
                       <div className="absolute top-4 right-4">
-                        <Badge className="bg-gold-500 text-white shadow-elegant border-0">
-                          ⭐ Popular
+                        <Badge className="bg-pink-500 text-white shadow-elegant border-0">
+                          Popular
                         </Badge>
                       </div>
                     )}

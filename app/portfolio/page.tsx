@@ -4,8 +4,9 @@ import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { portfolioItems, PortfolioCategory, PortfolioItem } from '@/lib/constants/portfolio'
 import { PortfolioFilters } from '@/components/features/portfolio/portfolio-filters'
-import { PortfolioGrid } from '@/components/features/portfolio/portfolio-grid'
+import { EnhancedPortfolioGrid } from '@/components/features/portfolio/enhanced-portfolio-grid'
 import { PortfolioLightbox } from '@/components/features/portfolio/portfolio-lightbox'
+import { HydrationBoundary } from '@/components/ui/hydration-boundary'
 import { slideUp } from '@/lib/animations'
 
 export default function PortfolioPage() {
@@ -85,7 +86,15 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <section className="py-16 md:py-24 bg-ivory">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-ivory via-cream-50 to-warmgray-50 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-pink-200/40 to-purple-200/40 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-gold-200/40 to-amber-200/40 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-200/40 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filters */}
           <PortfolioFilters
@@ -93,11 +102,13 @@ export default function PortfolioPage() {
             onCategoryChange={setActiveCategory}
           />
 
-          {/* Grid */}
-          <PortfolioGrid
-            items={filteredItems}
-            onItemClick={handleItemClick}
-          />
+          {/* Enhanced Grid */}
+          <HydrationBoundary>
+            <EnhancedPortfolioGrid
+              items={filteredItems}
+              onItemClick={handleItemClick}
+            />
+          </HydrationBoundary>
 
           {/* Results count */}
           <motion.div
@@ -116,6 +127,7 @@ export default function PortfolioPage() {
               )}
             </p>
           </motion.div>
+        </div>
         </div>
       </section>
 

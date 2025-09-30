@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Send, Bot, User, Loader2, MessageSquare, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { HydrationBoundary } from '@/components/ui/hydration-boundary'
 
 interface Message {
   id: string
@@ -148,8 +149,9 @@ You represent a luxury nail salon experience - be knowledgeable, caring, and pro
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-ivory to-warmgray-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <HydrationBoundary>
+      <div className="min-h-screen bg-gradient-to-br from-ivory to-warmgray-50">
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -164,12 +166,12 @@ You represent a luxury nail salon experience - be knowledgeable, caring, and pro
               Bella — Your Nail Artist
             </h1>
           </div>
-          <p className=\"text-gray-600 max-w-2xl mx-auto\">
+          <p className="text-gray-600 max-w-2xl mx-auto">
             I'm here to help you discover your perfect nail look, recommend services and pricing, plan your visit, and provide expert nail care advice — all with elegance and care.
           </p>
-          <div className=\"flex items-center justify-center space-x-2 mt-4\">
-            <Sparkles className=\"w-4 h-4 text-gold-500\" />
-            <span className=\"text-sm text-gray-600 font-medium\">Powered by GLM-4.5-Air via Chutes AI</span>
+          <div className="flex items-center justify-center space-x-2 mt-4">
+            <Sparkles className="w-4 h-4 text-gold-500" />
+            <span className="text-sm text-gray-600 font-medium">Powered by GLM-4.5-Air via Chutes AI</span>
           </div>
         </motion.div>
 
@@ -337,7 +339,8 @@ You represent a luxury nail salon experience - be knowledgeable, caring, and pro
             </code>
           </p>
         </motion.div>
+        </div>
       </div>
-    </div>
+    </HydrationBoundary>
   )
 }

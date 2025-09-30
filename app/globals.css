@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent browser extension attributes from affecting styling */
+[bis_skin_checked] {
+  /* Reset any potential styling interference from browser extensions */
+}
+
 @layer utilities {
   /* Screen reader only - for accessibility */
   .sr-only {
