@@ -2,7 +2,7 @@
 
 import { Suspense, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Environment, PerspectiveCamera, Stars, Loader } from '@react-three/drei'
+import { OrbitControls, Environment, PerspectiveCamera, Stars } from '@react-three/drei'
 import { PortfolioItem } from '@/lib/constants/portfolio'
 import { ThreePortfolioCard } from './three-portfolio-card'
 import * as THREE from 'three'
