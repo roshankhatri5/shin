@@ -44,11 +44,11 @@ export function FeaturesSection() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="font-display text-h1 md:text-display-lg text-charcoal mb-4">
-            Why Choose <span className="text-rose-gold">Luxury Nails</span>
+            Why Choose <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">Elegant Nails</span>
           </h2>
-          <p className="text-body-lg text-charcoal-light">
+          <p className="text-body-lg text-warmgray-600 leading-relaxed">
             We're committed to providing an exceptional experience that combines artistry, 
-            hygiene, and relaxation in every visit.
+            hygiene, and relaxation in every visit with <span className="text-gold-600 font-medium">unmatched attention to detail.</span>
           </p>
         </motion.div>
 
@@ -69,20 +69,20 @@ export function FeaturesSection() {
             >
               <motion.div
                 variants={hoverLift}
-                className="bg-cream-50 rounded-2xl p-8 h-full border-2 border-transparent hover:border-rose-gold-200 transition-all duration-300"
+                className="bg-gradient-to-br from-white to-warmgray-50/50 rounded-3xl p-8 h-full border border-gold-200/30 hover:border-gold-300/50 transition-all duration-500 shadow-soft hover:shadow-luxury backdrop-blur-sm"
               >
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-rose-gold-100 to-blush-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-8 h-8 text-rose-gold" aria-hidden="true" />
+                  <div className="w-18 h-18 rounded-2xl bg-gradient-to-br from-gold-100 to-gold-200 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-soft">
+                    <feature.icon className="w-9 h-9 text-gold-600 group-hover:text-gold-700" aria-hidden="true" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="font-heading text-h4 text-charcoal mb-3 group-hover:text-rose-gold transition-colors duration-300">
+                <h3 className="font-heading text-h4 text-charcoal mb-4 group-hover:text-gold-600 transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-body text-charcoal-light leading-relaxed">
+                <p className="text-body text-warmgray-600 leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>

@@ -6,14 +6,16 @@ import { cn } from '@/lib/utils'
 import { ButtonProps } from '@/types/components'
 
 const buttonVariants = {
-  primary: 'bg-gradient-to-r from-rose-gold to-rose-gold-600 text-white hover:from-rose-gold-600 hover:to-rose-gold-700 hover:shadow-luxury hover:-translate-y-0.5',
-  secondary: 'bg-gradient-to-r from-blush to-blush-600 text-white hover:from-blush-600 hover:to-blush-700 hover:shadow-luxury hover:-translate-y-0.5',
-  outline: 'border-2 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white hover:shadow-luxury hover:-translate-y-0.5',
-  ghost: 'text-rose-gold hover:bg-rose-gold-50 hover:shadow-glass-subtle',
-  link: 'text-rose-gold underline-offset-4 hover:underline',
-  shimmer: 'relative overflow-hidden bg-gradient-to-r from-rose-gold via-blush to-rose-gold bg-shimmer animate-shimmer text-white hover:shadow-shimmer',
-  glass: 'bg-white/80 backdrop-blur-md border border-white/20 text-rose-gold hover:bg-white/90 hover:shadow-glass hover:-translate-y-0.5',
-  gradient: 'bg-gradient-luxury text-white hover:shadow-luxury hover:-translate-y-0.5',
+  primary: 'bg-gradient-to-r from-pink to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 hover:shadow-luxury hover:-translate-y-0.5 shadow-soft',
+  secondary: 'bg-gradient-to-r from-blush to-blush-600 text-white hover:from-blush-600 hover:to-blush-700 hover:shadow-luxury hover:-translate-y-0.5 shadow-soft',
+  outline: 'border-2 border-pink text-pink hover:bg-pink hover:text-white hover:shadow-luxury hover:-translate-y-0.5 transition-all duration-300',
+  ghost: 'text-pink hover:bg-pink-50 hover:shadow-glass-subtle transition-all duration-300',
+  link: 'text-pink underline-offset-4 hover:underline hover:text-pink-600 transition-colors duration-300',
+  shimmer: 'relative overflow-hidden bg-gradient-to-r from-pink via-blush to-gold bg-shimmer animate-shimmer text-white hover:shadow-shimmer',
+  glass: 'bg-white/90 backdrop-blur-md border border-ivory-200 text-pink hover:bg-white hover:shadow-elegant hover:-translate-y-0.5',
+  gradient: 'bg-gradient-luxury text-white hover:shadow-luxury hover:-translate-y-0.5 shadow-soft',
+  elegant: 'bg-gradient-to-r from-rose to-blush text-white hover:from-rose-600 hover:to-blush-600 hover:shadow-elegant hover:-translate-y-0.5 shadow-soft',
+  rose: 'bg-gradient-to-r from-rose-300 to-rose-400 text-white hover:from-rose-400 hover:to-rose-500 hover:shadow-elegant hover:-translate-y-0.5',
 }
 
 const buttonSizes = {
@@ -52,9 +54,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={onClick}
         className={cn(
           'font-heading font-semibold rounded-full transition-all duration-300',
-          'focus:outline-none focus:ring-2 focus:ring-rose-gold-300 focus:ring-offset-2',
+          'focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 focus:ring-offset-ivory',
           'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none',
           'inline-flex items-center justify-center gap-2',
+          'active:scale-95 hover:scale-105 transform-gpu',
           buttonVariants[variant],
           buttonSizes[size],
           fullWidth && 'w-full',

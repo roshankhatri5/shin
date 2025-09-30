@@ -16,6 +16,7 @@ const navLinks = [
   { href: '/faq', label: 'FAQ' },
   { href: '/offers', label: 'Offers' },
   { href: '/gift-cards', label: 'Gift Cards' },
+  { href: '/chat', label: 'AI Chat' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -57,9 +58,9 @@ export function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           isScrolled
-            ? 'bg-white shadow-md'
+            ? 'bg-white/95 backdrop-blur-xl shadow-luxury border-b border-gold-200/30'
             : 'bg-transparent'
         )}
       >
@@ -73,18 +74,18 @@ export function Navigation() {
             >
               <Sparkles 
                 className={cn(
-                  'w-8 h-8 transition-all duration-300 group-hover:rotate-12',
-                  isScrolled ? 'text-rose-gold' : 'text-white'
+                  'w-8 h-8 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 animate-pulse-glow',
+                  isScrolled ? 'text-gold-500' : 'text-white drop-shadow-lg'
                 )} 
                 aria-hidden="true"
               />
               <span 
                 className={cn(
-                  'font-display text-2xl font-semibold transition-colors duration-300',
-                  isScrolled ? 'text-charcoal' : 'text-white'
+                  'font-display text-2xl font-semibold transition-all duration-500',
+                  isScrolled ? 'text-charcoal' : 'text-white drop-shadow-lg'
                 )}
               >
-                Luxury Nails
+                Elegant Nails
               </span>
             </Link>
 
@@ -95,21 +96,21 @@ export function Navigation() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'font-heading font-medium text-sm uppercase tracking-wide transition-colors duration-300 relative group',
+                    'font-heading font-medium text-sm uppercase tracking-wide transition-all duration-300 relative group py-2 px-3 rounded-full',
                     pathname === link.href
                       ? isScrolled 
-                        ? 'text-rose-gold' 
-                        : 'text-white'
+                        ? 'text-gold-600 font-semibold bg-gold-50' 
+                        : 'text-white font-semibold drop-shadow-md bg-white/10'
                       : isScrolled
-                        ? 'text-charcoal hover:text-rose-gold'
-                        : 'text-white/90 hover:text-white'
+                        ? 'text-charcoal hover:text-gold-600 hover:bg-gold-50'
+                        : 'text-white/90 hover:text-white hover:drop-shadow-md hover:bg-white/10'
                   )}
                 >
                   {link.label}
                   <span 
                     className={cn(
-                      'absolute -bottom-1 left-0 w-0 h-0.5 bg-rose-gold transition-all duration-300 group-hover:w-full',
-                      pathname === link.href && 'w-full'
+                      'absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-gold-400 to-gold-600 transition-all duration-300 group-hover:w-3/4 rounded-full',
+                      pathname === link.href && 'w-3/4'
                     )}
                     aria-hidden="true"
                   />
@@ -121,10 +122,11 @@ export function Navigation() {
             <div className="hidden lg:block">
               <Link href="/booking">
                 <Button
+                  variant="elegant"
                   size="lg"
-                  className="bg-rose-gold hover:bg-rose-gold-600 text-white rounded-full shadow-luxury hover:shadow-luxury-hover"
+                  className="rounded-full shadow-luxury hover:shadow-glow transform-gpu bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-white border-0 px-8 py-3 font-semibold transition-all duration-300 hover:scale-105"
                 >
-                  Book Now
+                  ✨ Book Now
                 </Button>
               </Link>
             </div>
@@ -133,10 +135,10 @@ export function Navigation() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={cn(
-                'lg:hidden p-2 rounded-lg transition-colors duration-300',
+                'lg:hidden p-3 rounded-xl transition-all duration-300 transform hover:scale-110',
                 isScrolled 
-                  ? 'text-charcoal hover:bg-cream-200' 
-                  : 'text-white hover:bg-white/10'
+                  ? 'text-charcoal hover:bg-ivory-200 hover:shadow-soft' 
+                  : 'text-white hover:bg-white/10 hover:backdrop-blur-sm'
               )}
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
@@ -175,30 +177,31 @@ export function Navigation() {
               exit={{ x: '100%' }}
               transition={{ 
                 type: 'spring', 
-                damping: 30, 
-                stiffness: 300 
+                damping: 25, 
+                stiffness: 200,
+                duration: 0.5
               }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white z-50 lg:hidden shadow-2xl overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-gradient-to-br from-white via-warmgray-50/50 to-gold-50/30 border-l border-gold-200/30 z-50 lg:hidden shadow-2xl overflow-y-auto backdrop-blur-xl"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between px-6 py-5 border-b border-cream-200">
+                <div className="flex items-center justify-between px-6 py-6 border-b border-gold-200/30 bg-white/60 backdrop-blur-sm">
                   <Link 
                     href="/" 
-                    className="flex items-center space-x-2"
+                    className="flex items-center space-x-2 group"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Sparkles className="w-8 h-8 text-rose-gold" aria-hidden="true" />
+                    <Sparkles className="w-8 h-8 text-gold-500 group-hover:rotate-12 transition-transform duration-300 animate-pulse-glow" aria-hidden="true" />
                     <span className="font-display text-2xl font-semibold text-charcoal">
-                      Luxury Nails
+                      Elegant Nails
                     </span>
                   </Link>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 rounded-lg text-charcoal hover:bg-cream-200 transition-colors"
+                    className="p-2 rounded-lg text-charcoal hover:bg-ivory-100 hover:shadow-soft transition-all duration-300"
                     aria-label="Close menu"
                   >
                     <X className="w-6 h-6" aria-hidden="true" />
@@ -218,10 +221,10 @@ export function Navigation() {
                         <Link
                           href={link.href}
                           className={cn(
-                            'block px-4 py-3 rounded-lg font-heading font-medium text-lg transition-colors duration-200',
+                            'block px-5 py-4 rounded-xl font-heading font-medium text-lg transition-all duration-300 transform hover:scale-[1.02]',
                             pathname === link.href
-                              ? 'bg-rose-gold-50 text-rose-gold'
-                              : 'text-charcoal hover:bg-cream-100'
+                              ? 'bg-gradient-to-r from-gold-50 to-gold-100 text-gold-700 shadow-soft border border-gold-200'
+                              : 'text-charcoal hover:bg-gradient-to-r hover:from-warmgray-50 hover:to-gold-50 hover:shadow-soft'
                           )}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -233,18 +236,25 @@ export function Navigation() {
                 </nav>
 
                 {/* Mobile Menu Footer */}
-                <div className="px-6 py-6 border-t border-cream-200">
-                  <Link href="/booking" onClick={() => setIsMobileMenuOpen(false)} className="block">
+                <div className="px-6 py-8 border-t border-gold-200/30 bg-white/40 backdrop-blur-sm">
+                  <Link href="/booking" onClick={() => setIsMobileMenuOpen(false)} className="block mb-6">
                     <Button
+                      variant="elegant"
                       size="lg"
-                      className="w-full bg-rose-gold hover:bg-rose-gold-600 text-white rounded-full shadow-luxury"
+                      fullWidth
+                      className="rounded-xl shadow-luxury text-lg py-4 bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-white border-0 hover:scale-105 transition-all duration-300"
                     >
-                      Book Appointment
+                      ✨ Book Appointment
                     </Button>
                   </Link>
-                  <p className="mt-4 text-center text-sm text-charcoal-light">
-                    Call us: <a href="tel:+15550123" className="text-rose-gold hover:underline">(555) 012-3456</a>
-                  </p>
+                  <div className="text-center space-y-3">
+                    <p className="text-sm text-charcoal/70">
+                      Call us: <a href="tel:+15550123" className="text-pink hover:text-pink-600 font-medium hover:underline transition-colors">(555) 012-3456</a>
+                    </p>
+                    <p className="text-xs text-charcoal/60">
+                      Experience luxury nail care with us
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>

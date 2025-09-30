@@ -52,7 +52,7 @@ export const Tabs: React.FC<TabsProps> = ({
     }
 
     if (nextIndex !== currentIndex && availableTabs[nextIndex]) {
-      handleTabChange(availableTabs[nextIndex].value)
+      handleTabChange(availableTabs[nextIndex]!.value)
     }
   }
 

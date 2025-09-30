@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+// import Image from 'next/image' // TODO: Add service images
 import { ArrowRight, Clock, DollarSign } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -25,10 +25,10 @@ export function ServicesPreview() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="font-display text-h1 md:text-display-lg text-charcoal mb-4">
-            Our <span className="text-rose-gold">Signature Services</span>
+            Our <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">Signature Services</span>
           </h2>
-          <p className="text-body-lg text-charcoal-light">
-            Discover our most popular treatments, crafted to perfection by our expert technicians.
+          <p className="text-body-lg text-warmgray-600 leading-relaxed">
+            Discover our most popular treatments, crafted to perfection by our expert technicians with <span className="text-gold-600 font-medium">premium products and techniques.</span>
           </p>
         </motion.div>
 
@@ -50,16 +50,19 @@ export function ServicesPreview() {
               <Link href={`/services/${service.slug}`}>
                 <motion.div
                   variants={hoverLift}
-                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-luxury transition-all duration-300 h-full flex flex-col"
+                  className="bg-gradient-to-br from-white to-warmgray-50/30 rounded-3xl overflow-hidden shadow-soft hover:shadow-luxury transition-all duration-500 h-full flex flex-col border border-gold-200/20 hover:border-gold-300/40 backdrop-blur-sm"
                 >
                   {/* Image */}
-                  <div className="relative h-64 bg-gradient-to-br from-rose-gold-100 to-blush-100 overflow-hidden">
+                  <div className="relative h-64 bg-gradient-to-br from-gold-100 to-gold-200 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-6xl opacity-20">💅</div>
+                      <div className="text-6xl opacity-30 animate-bounce-soft">💅</div>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gold-300/20 to-transparent"></div>
                     {service.popular && (
                       <div className="absolute top-4 right-4">
-                        <Badge className="bg-rose-gold text-white">Popular</Badge>
+                        <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-luxury animate-pulse-glow border-0">
+                          ⭐ Popular
+                        </Badge>
                       </div>
                     )}
                   </div>
@@ -67,28 +70,28 @@ export function ServicesPreview() {
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="flex-1">
-                      <h3 className="font-heading text-h4 text-charcoal mb-2 group-hover:text-rose-gold transition-colors duration-300">
+                      <h3 className="font-heading text-h4 text-charcoal mb-3 group-hover:text-gold-600 transition-colors duration-300">
                         {service.name}
                       </h3>
-                      <p className="text-body-sm text-charcoal-light mb-4 line-clamp-2">
+                      <p className="text-body-sm text-warmgray-600 mb-4 line-clamp-2 leading-relaxed">
                         {service.shortDescription}
                       </p>
 
                       {/* Meta Info */}
-                      <div className="flex items-center gap-4 text-body-sm text-charcoal-light mb-4">
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" aria-hidden="true" />
+                      <div className="flex items-center gap-4 text-body-sm text-warmgray-500 mb-4">
+                        <div className="flex items-center gap-1 bg-warmgray-50 px-3 py-1 rounded-full">
+                          <Clock className="w-4 h-4 text-gold-500" aria-hidden="true" />
                           <span>{service.duration.min}-{service.duration.max} min</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <DollarSign className="w-4 h-4" aria-hidden="true" />
+                        <div className="flex items-center gap-1 bg-gold-50 px-3 py-1 rounded-full">
+                          <DollarSign className="w-4 h-4 text-gold-600" aria-hidden="true" />
                           <span>From ${service.pricing[0]?.price || 0}</span>
                         </div>
                       </div>
                     </div>
 
                     {/* View Details Link */}
-                    <div className="flex items-center text-rose-gold font-heading text-sm font-semibold group-hover:gap-2 transition-all duration-300">
+                    <div className="flex items-center text-gold-600 font-heading text-sm font-semibold group-hover:gap-2 transition-all duration-300 bg-gold-50 px-4 py-2 rounded-full hover:bg-gold-100">
                       <span>View Details</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
                     </div>

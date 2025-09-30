@@ -6,13 +6,15 @@ import { cn } from '@/lib/utils'
 import { CardProps } from '@/types/components'
 
 const cardVariants = {
-  default: 'bg-white shadow-glass-subtle hover:shadow-luxury hover:-translate-y-1',
+  default: 'bg-white shadow-glass-subtle hover:shadow-elegant hover:-translate-y-1',
   elevated: 'bg-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-2',
-  bordered: 'bg-gradient-to-br from-white to-cream-50 border-2 border-rose-gold-200 hover:border-rose-gold-300 hover:shadow-luxury',
-  glass: 'bg-white/80 backdrop-blur-md border border-white/20 shadow-glass hover:bg-white/90 hover:shadow-luxury hover:-translate-y-1',
-  'glass-strong': 'bg-white/90 backdrop-blur-lg border border-white/30 shadow-glass hover:bg-white/95 hover:shadow-luxury-lg hover:-translate-y-1',
-  luxury: 'bg-gradient-to-br from-white via-cream-50 to-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-2 border border-rose-gold-100',
-  shimmer: 'bg-gradient-to-br from-white to-cream-50 shadow-luxury hover:shadow-shimmer relative overflow-hidden',
+  bordered: 'bg-gradient-to-br from-white to-ivory-50 border-2 border-pink-200 hover:border-pink-300 hover:shadow-luxury',
+  glass: 'bg-white/85 backdrop-blur-lg border border-ivory-200/50 shadow-glass hover:bg-white/95 hover:shadow-elegant hover:-translate-y-1',
+  'glass-strong': 'bg-white/95 backdrop-blur-xl border border-ivory-200 shadow-glass hover:bg-white hover:shadow-luxury hover:-translate-y-1',
+  luxury: 'bg-gradient-to-br from-white via-ivory-50 to-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-3 border border-pink-100',
+  shimmer: 'bg-gradient-to-br from-white to-ivory-50 shadow-luxury hover:shadow-shimmer relative overflow-hidden',
+  elegant: 'bg-gradient-soft shadow-elegant hover:shadow-luxury hover:-translate-y-2 border border-ivory-200',
+  soft: 'bg-white/90 backdrop-blur-sm shadow-soft hover:shadow-elegant hover:-translate-y-1 border border-ivory-100',
 }
 
 const cardPadding = {
@@ -41,7 +43,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       <Component
         ref={ref}
         className={cn(
-          'rounded-2xl overflow-hidden transition-all duration-300 relative',
+          'rounded-2xl overflow-hidden transition-all duration-500 relative transform-gpu',
           cardVariants[variant],
           cardPadding[padding],
           className

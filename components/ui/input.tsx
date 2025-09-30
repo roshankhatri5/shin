@@ -38,13 +38,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             )}
           >
             {label}
-            {props.required && <span className="text-rose-gold ml-1">*</span>}
+            {props.required && <span className="text-pink ml-1">*</span>}
           </label>
         )}
         
         <div className="relative">
           {leftIcon && (
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal-light pointer-events-none">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-warmgray pointer-events-none">
               {leftIcon}
             </div>
           )}
@@ -54,13 +54,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={id}
             disabled={disabled}
             className={cn(
-              'w-full font-body rounded-lg border transition-all duration-200',
+              'w-full font-body rounded-xl border transition-all duration-300',
               'focus:outline-none focus:ring-2 focus:ring-offset-0',
-              'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-cream-100',
-              'placeholder:text-charcoal-light/50',
+              'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-ivory-100',
+              'placeholder:text-warmgray-400 bg-white',
+              'hover:border-pink-200 hover:shadow-soft',
               error
-                ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
-                : 'border-cream-200 focus:border-rose-gold focus:ring-rose-gold-200',
+                ? 'border-red-400 focus:border-red-500 focus:ring-red-200 shadow-red-100'
+                : 'border-ivory-200 focus:border-pink focus:ring-pink-200 focus:shadow-elegant',
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
               inputSizes[size],
@@ -74,7 +75,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           />
           
           {rightIcon && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal-light pointer-events-none">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-warmgray pointer-events-none">
               {rightIcon}
             </div>
           )}
@@ -93,7 +94,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {helperText && !error && (
           <p
             id={`${id}-helper`}
-            className="mt-2 text-body-sm text-charcoal-light"
+            className="mt-2 text-body-sm text-warmgray"
           >
             {helperText}
           </p>
