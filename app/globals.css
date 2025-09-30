@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Screen reader only - for accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background-color: #b87474;
+    color: white;
+    z-index: 9999;
+    display: block;
+    text-align: center;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    /* Color variables */
+    --rose-gold: #b87474;
+    --blush: #f5a5c1;
+    --lavender: #c6b0da;
+    --mint: #a6d8c7;
+    --cream: #faf8f5;
+    --charcoal: #2d2d2d;
+    
+    /* Font variables */
+    --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+    --font-montserrat: 'Montserrat', Inter, sans-serif;
+    --font-inter: 'Inter', system-ui, sans-serif;
+  }
+  
+  * {
+    @apply border-cream-300;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-cream text-charcoal font-body antialiased;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-rose-gold ring-offset-2 ring-offset-cream;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  
+  h1 {
+    @apply text-h1;
+  }
+  
+  h2 {
+    @apply text-h2;
+  }
+  
+  h3 {
+    @apply text-h3;
+  }
+  
+  h4 {
+    @apply text-h4;
+  }
+  
+  h5 {
+    @apply text-h5;
+  }
+  
+  h6 {
+    @apply text-h6;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full font-heading font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply bg-rose-gold text-white hover:bg-rose-gold-600 hover:shadow-luxury hover:-translate-y-0.5 active:translate-y-0;
+  }
+  
+  .btn-secondary {
+    @apply bg-blush text-white hover:bg-blush-600 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white;
+  }
+  
+  .btn-ghost {
+    @apply text-rose-gold hover:bg-rose-gold-50;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply rounded-2xl bg-white shadow-sm overflow-hidden transition-all duration-300;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-md hover:-translate-y-1;
+  }
+}
+
+@layer utilities {
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-rose-gold to-blush bg-clip-text text-transparent;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-in-out;
+  }
+  
+  /* Accessibility - Screen reader only */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+  
+  .sr-only-focusable:focus {
+    @apply static w-auto h-auto p-1 m-0 overflow-visible whitespace-normal;
+    clip: auto;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-rose-gold-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-rose-gold-400;
+}
