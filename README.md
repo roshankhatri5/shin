@@ -1,4 +1,3 @@
-
 # Luxury Nail Salon Website
 
 A modern, high-performance website for a luxury nail salon built with Next.js 14+, TypeScript, and Tailwind CSS. This comprehensive solution includes booking systems, service galleries, portfolio showcases, and admin capabilities.
@@ -328,3 +327,654 @@ const CustomButton = forwardRef<HTMLButtonElement, CustomButtonProps>(
           'font-heading font-semibold rounded-full transition-all duration-300 inline-flex items-center justify-center',
           {
             'bg-rose-gold text-white hover:bg-rose-gold-600 hover:shadow-lg hover:-translate-y-0.5': variant === 'primary',
+            'bg-blush text-white hover:bg-blush-600 hover:shadow-lg hover:-translate-y-0.5': variant === 'secondary',
+            'border-2 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white': variant === 'outline',
+            'text-rose-gold hover:bg-rose-gold-50': variant === 'ghost',
+          },
+          {
+            'px-4 py-2 text-body-sm': size === 'sm',
+            'px-6 py-3 text-body': size === 'md',
+            'px-8 py-4 text-body-lg': size === 'lg',
+          },
+          'disabled:opacity-50 disabled:cursor-not-allowed',
+          className
+        )}
+        disabled={isLoading || props.disabled}
+        {...props}
+      >
+        {isLoading ? (
+          <>
+            <span className="animate-spin mr-2">🌀</span>
+            Loading...
+          </>
+        ) : (
+          children
+        )}
+      </button>
+    )
+  }
+)
+
+CustomButton.displayName = 'CustomButton'
+
+export { CustomButton }
+```
+
+### 4. Adding a new page
+
+```tsx
+// app/our-team/page.tsx
+import { Metadata } from 'next'
+import { TeamGrid } from '@/components/features/team/team-grid'
+import { Section } from '@/components/layouts/section'
+import { sanityFetch } from '@/lib/sanity/fetch'
+
+export const metadata: Metadata = {
+  title: 'Our Team | Luxury Nail Salon',
+  description: 'Meet our expert nail technicians and stylists'
+}
+
+export default async function OurTeamPage() {
+  const teamMembers = await sanityFetch({
+    query: `*[_type == "teamMember"] | order(displayOrder asc) {
+      _id,
+      name,
+      role,
+      bio,
+      photo,
+      specialties,
+      yearsExperience
+    }`,
+    tags: ['team']
+ })
+
+  return (
+    <main className="min-h-screen">
+      <Section className="py-16 md:py-24">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-display font-bold text-charcoal mb-4">
+            Meet Our Experts
+          </h1>
+          <p className="text-xl text-charcoal/70 max-w-2xl mx-auto">
+            Our talented team of nail technicians brings years of experience and passion to every service
+          </p>
+        </div>
+        
+        <TeamGrid teamMembers={teamMembers} />
+      </Section>
+    </main>
+  )
+}
+```
+
+## 🎯 Features
+
+### 1. Advanced Booking System
+- Real-time availability checking
+- Multi-service selection
+- Staff preference options
+- Deposit and payment processing
+- Automated confirmations and reminders
+- Cancellation policies
+
+### 2. Service Gallery with Pricing
+- Filterable service catalog
+- Detailed service descriptions
+- Multiple pricing tiers
+- Image galleries for each service
+- Duration and availability indicators
+
+### 3. Portfolio Showcase
+- Masonry-style gallery layout
+- Category filtering
+- Lightbox viewing experience
+- Customer tags and reviews
+- Social media integration
+
+### 4. Responsive Design
+- Mobile-first approach
+- Tablet and desktop optimized
+- Touch-friendly interactions
+- Accessible navigation
+
+### 5. Performance Optimized
+- Image optimization with next/image
+- Code splitting and lazy loading
+- Server-side rendering
+- Incremental static regeneration
+- Caching strategies
+
+### 6. SEO Optimized
+- Semantic HTML structure
+- Schema.org markup
+- Open Graph tags
+- Sitemap generation
+- Robots.txt configuration
+
+### 7. Admin Dashboard
+- Booking management
+- Customer information
+- Service editing
+- Staff scheduling
+- Analytics dashboard
+
+## 🔧 Configuration Options
+
+### Environment Variables
+
+The application uses several environment variables for configuration:
+
+#### Database Configuration
+- `DATABASE_URL`: PostgreSQL connection string (Supabase)
+- `DIRECT_URL`: Direct database connection for serverless functions
+
+#### CMS Configuration
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`: Sanity project identifier
+- `NEXT_PUBLIC_SANITY_DATASET`: Sanity dataset name
+- `SANITY_API_TOKEN`: API token for content management
+
+#### Authentication
+- `NEXTAUTH_URL`: Base URL for authentication
+- `NEXTAUTH_SECRET`: Secret for JWT signing
+- `GOOGLE_CLIENT_ID`: Google OAuth client ID
+- `GOOGLE_CLIENT_SECRET`: Google OAuth client secret
+
+#### Payment Processing
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Stripe publishable key
+- `STRIPE_SECRET_KEY`: Stripe secret key
+- `STRIPE_WEBHOOK_SECRET`: Stripe webhook secret
+
+#### Email Services
+- `RESEND_API_KEY`: API key for transactional emails
+
+#### Analytics
+- `NEXT_PUBLIC_VERCEL_ANALYTICS_ID`: Vercel Analytics ID
+
+### Customization Options
+
+#### Theme Configuration
+```typescript
+// tailwind.config.ts
+module.exports = {
+ theme: {
+    extend: {
+      colors: {
+        // Custom color palette
+        'rose-gold': '#b87474',
+        'blush': '#f5a5c1',
+        'lavender': '#c6b0da',
+        'mint': '#a6d8c7',
+        'cream': '#faf8f5',
+        'charcoal': '#2d2d2d',
+      },
+      fontFamily: {
+        display: ['Cormorant Garamond', 'Georgia', 'serif'],
+        heading: ['Montserrat', 'Inter', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      // Custom animations, spacing, etc.
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/container-queries'),
+  ],
+}
+```
+
+#### API Configuration
+```typescript
+// lib/api/config.ts
+export const API_CONFIG = {
+  TIMEOUT: 1000, // 10 seconds
+  RETRY_ATTEMPTS: 3,
+  BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || '',
+  HEADERS: {
+    'Content-Type': 'application/json',
+  },
+}
+```
+
+## 📚 API Documentation
+
+### Booking API
+
+#### Get Available Time Slots
+```
+POST /api/booking/availability
+```
+
+**Request Body:**
+```json
+{
+  "serviceIds": ["service-uuid", "service-uuid"],
+  "date": "2023-12-25",
+  "staffId": "staff-uuid" // optional
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "timeSlots": [
+      {
+        "startTime": "2023-12-25T10:00:00Z",
+        "endTime": "2023-12-25T11:00:00Z",
+        "available": true,
+        "staffId": "staff-uuid"
+      }
+    ]
+ }
+}
+```
+
+#### Create Booking
+```
+POST /api/booking/create
+```
+
+**Request Body:**
+```json
+{
+  "services": [
+    {
+      "serviceId": "service-uuid",
+      "pricingTierId": "tier-uuid"
+    }
+ ],
+  "appointmentDateTime": "2023-12-25T10:00:00Z",
+  "staffId": "staff-uuid",
+  "customerInfo": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@example.com",
+    "phone": "+1234567890"
+  },
+  "notes": "Prefer window seat",
+  "agreedToPolicy": true
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "booking": {
+      "id": "booking-uuid",
+      "status": "pending",
+      "totalPrice": 85.00,
+      "depositAmount": 25.50,
+      "depositPaid": false,
+      "confirmationToken": "token-string"
+    },
+    "paymentUrl": "https://checkout.stripe.com/pay/..."
+  }
+}
+```
+
+#### Get Booking
+```
+GET /api/booking/[id]?token=confirmation-token
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "booking-uuid",
+    "status": "confirmed",
+    "services": [...],
+    "appointmentDateTime": "2023-12-25T10:00:00Z",
+    "staff": {
+      "name": "Jane Smith",
+      "role": "Senior Technician"
+    },
+    "customerInfo": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john@example.com"
+    }
+  }
+}
+```
+
+### Services API
+
+#### Get Services
+```
+GET /api/services?category=manicure&sort=popular&limit=10
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "service-uuid",
+      "name": "Luxury Gel Manicure",
+      "shortDescription": "Premium gel polish application",
+      "category": "manicure",
+      "pricing": [
+        {
+          "name": "Standard",
+          "price": 45.00
+        }
+      ],
+      "duration": {
+        "min": 45,
+        "max": 60
+      },
+      "image": {
+        "url": "https://cdn.sanity.io/images/...",
+        "alt": "Luxury gel manicure"
+      }
+    }
+  ],
+  "meta": {
+    "total": 15,
+    "page": 1,
+    "limit": 10
+  }
+}
+```
+
+### Portfolio API
+
+#### Get Portfolio Items
+```
+GET /api/portfolio?category=gel-polish&limit=12
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "portfolio-uuid",
+      "title": "Rose Gold Elegance",
+      "description": "Beautiful rose gold gel manicure",
+      "serviceCategory": "gel-polish",
+      "images": [
+        {
+          "url": "https://cdn.sanity.io/images/...",
+          "alt": "Rose gold gel manicure"
+        }
+      ],
+      "artistId": "staff-uuid",
+      "createdAt": "2023-11-15T10:30:00Z"
+    }
+  ]
+}
+```
+
+## 🛠️ Troubleshooting Guide
+
+### Common Issues
+
+#### 1. Environment Variables Not Loading
+**Problem:** Environment variables are undefined in the application.
+
+**Solution:**
+- Ensure `.env.local` file exists in the root directory
+- Verify the file is not committed to Git (check `.gitignore`)
+- Restart the development server after adding new variables
+- Use `NEXT_PUBLIC_` prefix for client-side accessible variables
+
+#### 2. Database Connection Issues
+**Problem:** Cannot connect to the database.
+
+**Solution:**
+- Verify `DATABASE_URL` is correctly set in environment variables
+- Check that your Supabase project is active and accessible
+- Ensure the database credentials are correct
+- Test the connection string independently
+
+#### 3. Image Loading Problems
+**Problem:** Images are not loading or showing broken links.
+
+**Solution:**
+- Verify image domains are added to `next.config.js`:
+```js
+images: {
+ domains: ['cdn.sanity.io', 'res.cloudinary.com'],
+  formats: ['image/avif', 'image/webp'],
+}
+```
+- Check that image URLs are properly formatted
+- Ensure images are correctly uploaded to Sanity CMS
+
+#### 4. Build Failures
+**Problem:** The build process fails with errors.
+
+**Solution:**
+- Run `npm run type-check` to identify TypeScript issues
+- Check for unused imports or exports
+- Verify all dependencies are properly installed
+- Ensure all environment variables are set for the build environment
+
+#### 5. Authentication Issues
+**Problem:** Authentication is not working as expected.
+
+**Solution:**
+- Verify `NEXTAUTH_SECRET` is set correctly
+- Check that OAuth provider credentials are valid
+- Ensure the callback URLs are properly configured in OAuth providers
+- Check that the database connection for NextAuth is working
+
+### Performance Issues
+
+#### 1. Slow Page Loads
+- Enable Turbopack: `npm run dev -- --turbo`
+- Optimize images with proper dimensions and formats
+- Implement code splitting for large components
+- Use lazy loading for below-the-fold content
+
+#### 2. Large Bundle Size
+- Analyze bundle with `npm run build` and check the output
+- Use dynamic imports for heavy components
+- Remove unused dependencies
+- Implement tree-shaking for utility libraries
+
+### Debugging Tips
+
+#### 1. Enable Debug Logging
+Add the following to your environment variables:
+```
+DEBUG=app:*
+LOG_LEVEL=debug
+```
+
+#### 2. Check Browser Console
+- Look for JavaScript errors
+- Check network requests for failures
+- Verify API calls are successful
+
+#### 3. Server-Side Logging
+Use structured logging in API routes:
+```typescript
+import { logger } from '@/lib/utils/logger'
+
+export async function POST(request: Request) {
+  logger.info('Booking creation request received')
+  
+  try {
+    // Your logic here
+    logger.info('Booking created successfully', { bookingId })
+  } catch (error) {
+    logger.error('Booking creation failed', { error })
+    // Handle error
+  }
+}
+```
+
+## 🤝 Contributing
+
+We welcome contributions to improve the Luxury Nail Salon website! Here's how you can contribute:
+
+### Getting Started
+
+1. **Fork the repository**
+   - Click the "Fork" button at the top right of this repository
+   - Clone your forked repository: `git clone https://github.com/your-username/luxury-nail-salon.git`
+
+2. **Set up the development environment**
+   ```bash
+   cd luxury-nail-salon
+   npm install
+   cp .env.example .env.local
+   # Configure your environment variables
+   npm run dev
+   ```
+
+3. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   # or
+   git checkout -b bugfix/issue-description
+   ```
+
+### Code Standards
+
+#### TypeScript
+- Use strict mode in all files
+- Write comprehensive type definitions
+- Follow naming conventions (PascalCase for types, camelCase for variables)
+- Add JSDoc comments for exported functions and components
+
+#### React Components
+- Use functional components with hooks
+- Follow the container/presentational pattern
+- Keep components focused on a single responsibility
+- Use TypeScript interfaces for props
+
+#### Styling
+- Use Tailwind CSS utility classes
+- Follow the design system tokens
+- Maintain consistent spacing and typography
+- Use semantic HTML elements
+
+#### File Structure
+- Organize components by feature in the `components/features/` directory
+- Keep reusable UI components in `components/ui/`
+- Place layout components in `components/layouts/`
+- Group related files in feature directories
+
+### Development Workflow
+
+1. **Create an issue** (if it doesn't exist)
+   - Describe the feature or bug
+   - Include any relevant context
+
+2. **Create a pull request**
+   - Link to the related issue
+   - Provide a clear description of changes
+   - Include screenshots if UI changes are made
+   - Add tests if applicable
+
+3. **Code review process**
+   - All PRs must be reviewed by at least one team member
+   - Address any feedback before merging
+   - Ensure all checks pass (CI, tests, linting)
+
+### Testing Guidelines
+
+#### Unit Tests
+- Write tests for utility functions
+- Test custom hooks with React Testing Library
+- Use meaningful test descriptions
+
+#### Integration Tests
+- Test API routes
+- Verify component interactions
+- Test form submissions and validations
+
+#### Example Test Structure
+```typescript
+// hooks/useBooking.test.ts
+import { renderHook, act } from '@testing-library/react'
+import { useBooking } from '@/hooks/useBooking'
+
+describe('useBooking', () => {
+  it('should initialize with empty state', () => {
+    const { result } = renderHook(() => useBooking())
+    
+    expect(result.current.selectedServices).toEqual([])
+    expect(result.current.customerInfo).toBeNull()
+  })
+
+  it('should add a service to the booking', () => {
+    const { result } = renderHook(() => useBooking())
+    
+    act(() => {
+      result.current.addService('service-id', 'tier-id')
+    })
+    
+    expect(result.current.selectedServices).toHaveLength(1)
+    expect(result.current.selectedServices[0]).toEqual({
+      serviceId: 'service-id',
+      pricingTierId: 'tier-id'
+    })
+  })
+})
+```
+
+### Commit Message Guidelines
+
+Follow the conventional commits format:
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+Types:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation only changes
+- `style`: Changes that do not affect meaning
+- `refactor`: Code changes that neither fix bugs nor add features
+- `test`: Adding missing tests or correcting existing tests
+- `chore`: Other changes that don't modify src or test files
+
+Examples:
+- `feat(booking): add staff selection to booking flow`
+- `fix(services): resolve image loading issue on service cards`
+- `docs(readme): update installation instructions`
+
+## 📄 License
+
+This project is private and proprietary. All rights reserved.
+
+For licensing inquiries, please contact the development team.
+
+## 🙏 Acknowledgments
+
+- Design inspired by luxury spa and salon aesthetics
+- Built with modern web technologies and best practices
+- Optimized for performance and accessibility
+- Special thanks to the open-source community for the tools and libraries that made this project possible
+
+## 📞 Support
+
+For technical support or questions about the Luxury Nail Salon website:
+
+- **Documentation:** Check this README and the architecture specification document
+- **Issues:** Report bugs or request features through GitHub Issues
+- **Email:** Contact the development team at [your-email@example.com]
+
+## 🔄 Updates
+
+This project follows semantic versioning. Check the releases page for updates and changelog information.
+
+---
+
+**Need help?** Refer to the architecture specification document in `ARCHITECTURE_SPECIFICATION.md` or contact the development team.

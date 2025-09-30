@@ -6,11 +6,14 @@ import { cn } from '@/lib/utils'
 import { ButtonProps } from '@/types/components'
 
 const buttonVariants = {
-  primary: 'bg-rose-gold text-white hover:bg-rose-gold-600 hover:shadow-lg hover:-translate-y-0.5',
-  secondary: 'bg-blush text-white hover:bg-blush-600 hover:shadow-lg hover:-translate-y-0.5',
-  outline: 'border-2 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white',
-  ghost: 'text-rose-gold hover:bg-rose-gold-50',
+  primary: 'bg-gradient-to-r from-rose-gold to-rose-gold-600 text-white hover:from-rose-gold-600 hover:to-rose-gold-700 hover:shadow-luxury hover:-translate-y-0.5',
+  secondary: 'bg-gradient-to-r from-blush to-blush-600 text-white hover:from-blush-600 hover:to-blush-700 hover:shadow-luxury hover:-translate-y-0.5',
+  outline: 'border-2 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white hover:shadow-luxury hover:-translate-y-0.5',
+  ghost: 'text-rose-gold hover:bg-rose-gold-50 hover:shadow-glass-subtle',
   link: 'text-rose-gold underline-offset-4 hover:underline',
+  shimmer: 'relative overflow-hidden bg-gradient-to-r from-rose-gold via-blush to-rose-gold bg-shimmer animate-shimmer text-white hover:shadow-shimmer',
+  glass: 'bg-white/80 backdrop-blur-md border border-white/20 text-rose-gold hover:bg-white/90 hover:shadow-glass hover:-translate-y-0.5',
+  gradient: 'bg-gradient-luxury text-white hover:shadow-luxury hover:-translate-y-0.5',
 }
 
 const buttonSizes = {
@@ -64,7 +67,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {loading ? (
           <>
             <svg
-              className="animate-spin h-4 w-4"
+              className="animate-spin h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -76,7 +79,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 cy="12"
                 r="10"
                 stroke="currentColor"
-                strokeWidth="4"
+                strokeWidth="2"
               />
               <path
                 className="opacity-75"
@@ -84,13 +87,28 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               />
             </svg>
-            <span>Loading...</span>
+            <span className="ml-2">Loading...</span>
           </>
         ) : (
           <>
-            {leftIcon && <span className="inline-flex">{leftIcon}</span>}
-            {children}
-            {rightIcon && <span className="inline-flex">{rightIcon}</span>}
+            {leftIcon && <span className="inline-flex mr-2">{leftIcon}</span>}
+            <span className="relative">
+              {children}
+              {variant === 'shimmer' && (
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                  initial={{ x: '-100%' }}
+                  animate={{ x: '100%' }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                    ease: 'easeInOut',
+                  }}
+                />
+              )}
+            </span>
+            {rightIcon && <span className="inline-flex ml-2">{rightIcon}</span>}
           </>
         )}
       </motion.button>

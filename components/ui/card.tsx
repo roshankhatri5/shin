@@ -6,10 +6,13 @@ import { cn } from '@/lib/utils'
 import { CardProps } from '@/types/components'
 
 const cardVariants = {
-  default: 'bg-white shadow-sm hover:shadow-md',
-  elevated: 'bg-white shadow-lg hover:shadow-xl hover:-translate-y-1',
-  bordered: 'bg-cream border-2 border-rose-gold-200',
-  glass: 'bg-white/80 backdrop-blur-sm border border-white/20',
+  default: 'bg-white shadow-glass-subtle hover:shadow-luxury hover:-translate-y-1',
+  elevated: 'bg-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-2',
+  bordered: 'bg-gradient-to-br from-white to-cream-50 border-2 border-rose-gold-200 hover:border-rose-gold-300 hover:shadow-luxury',
+  glass: 'bg-white/80 backdrop-blur-md border border-white/20 shadow-glass hover:bg-white/90 hover:shadow-luxury hover:-translate-y-1',
+  'glass-strong': 'bg-white/90 backdrop-blur-lg border border-white/30 shadow-glass hover:bg-white/95 hover:shadow-luxury-lg hover:-translate-y-1',
+  luxury: 'bg-gradient-to-br from-white via-cream-50 to-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-2 border border-rose-gold-100',
+  shimmer: 'bg-gradient-to-br from-white to-cream-50 shadow-luxury hover:shadow-shimmer relative overflow-hidden',
 }
 
 const cardPadding = {
@@ -26,8 +29,11 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const Component = hover ? motion.div : 'div'
     const motionProps = hover
       ? {
-          whileHover: { y: -4, scale: 1.02 },
-          transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+          whileHover: {
+            y: variant === 'luxury' || variant === 'elevated' ? -8 : -4,
+            scale: variant === 'luxury' ? 1.03 : 1.02
+          },
+          transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
         }
       : {}
 
@@ -35,7 +41,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       <Component
         ref={ref}
         className={cn(
-          'rounded-2xl overflow-hidden transition-all duration-300',
+          'rounded-2xl overflow-hidden transition-all duration-300 relative',
           cardVariants[variant],
           cardPadding[padding],
           className
@@ -43,7 +49,22 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         {...motionProps}
         {...props}
       >
-        {children}
+        {variant === 'shimmer' && (
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            initial={{ x: '-100%' }}
+            animate={{ x: '100%' }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 5,
+              ease: 'easeInOut',
+            }}
+          />
+        )}
+        <div className="relative z-10">
+          {children}
+        </div>
       </Component>
     )
   }

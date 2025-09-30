@@ -1,9 +1,9 @@
 // Shared component prop types and interfaces
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link'
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'shimmer' | 'glass' | 'gradient'
 export type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info'
-export type CardVariant = 'default' | 'elevated' | 'bordered' | 'glass'
+export type CardVariant = 'default' | 'elevated' | 'bordered' | 'glass' | 'glass-strong' | 'luxury' | 'shimmer'
 export type ToastVariant = 'success' | 'error' | 'warning' | 'info'
 
 export interface BaseComponentProps {
