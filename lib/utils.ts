@@ -32,8 +32,16 @@ export function formatDate(date: Date | string): string {
 }
 
 /**
- * Generate a random ID
+ * Generate a random ID (client-side safe)
  */
 export function generateId(): string {
-  return Math.random().toString(36).substring(2, 15)
+  // Use crypto.randomUUID if available (modern browsers)
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
+  }
+  
+  // Fallback for older browsers or server-side
+  const timestamp = Date.now().toString(36)
+  const randomPart = Math.random().toString(36).substring(2, 15)
+  return `${timestamp}_${randomPart}`
 }

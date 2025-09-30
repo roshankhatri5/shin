@@ -39,7 +39,7 @@ export function AIChatbot({ className }: AIChatbotProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: '1',
+      id: 'initial_message',
       text: "Hi! I'm your AI assistant at Elegant Nails. How can I help you today? ✨",
       isBot: true,
       timestamp: new Date()
@@ -49,6 +49,7 @@ export function AIChatbot({ className }: AIChatbotProps) {
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const messageCounterRef = useRef(1)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -92,8 +93,9 @@ export function AIChatbot({ className }: AIChatbotProps) {
   const handleSendMessage = () => {
     if (!inputText.trim()) return
 
+    messageCounterRef.current += 1
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: `user_message_${messageCounterRef.current}`,
       text: inputText,
       isBot: false,
       timestamp: new Date()
@@ -106,8 +108,9 @@ export function AIChatbot({ className }: AIChatbotProps) {
 
     // Simulate AI processing delay
     setTimeout(() => {
+      messageCounterRef.current += 1
       const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
+        id: `bot_message_${messageCounterRef.current}`,
         text: generateBotResponse(originalMessage),
         isBot: true,
         timestamp: new Date()
@@ -115,7 +118,7 @@ export function AIChatbot({ className }: AIChatbotProps) {
       
       setMessages(prev => [...prev, botResponse])
       setIsTyping(false)
-    }, 1000 + Math.random() * 1000) // Random delay between 1-2 seconds
+    }, 1500) // Fixed delay to avoid randomness during SSR
   }
 
   const handleQuickResponse = (response: string) => {

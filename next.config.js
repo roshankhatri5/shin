@@ -9,6 +9,9 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 
+  // Transpile Three.js packages for better compatibility
+  transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
+
   // Webpack configuration for Three.js
   webpack: (config, { isServer }) => {
     // Handle Three.js and related packages
@@ -20,19 +23,6 @@ const nextConfig = {
         os: false,
       }
     }
-
-    // Optimize Three.js bundle
-    config.module.rules.push({
-      test: /\.js$/,
-      include: /node_modules\/(three|@react-three)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
-          plugins: ['@babel/plugin-transform-runtime'],
-        },
-      },
-    })
 
     return config
   },

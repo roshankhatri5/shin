@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState, useCallback } from 'react'
+import React, { createContext, useContext, useState, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { toastSlideIn } from '@/lib/animations'
@@ -25,13 +25,16 @@ export const useToast = () => {
 // Toast Provider
 export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastProps[]>([])
+  const counterRef = useRef(0)
 
   const hideToast = useCallback((id: string) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id))
   }, [])
 
   const showToast = useCallback((toast: Omit<ToastProps, 'id' | 'onClose'>) => {
-    const id = Math.random().toString(36).substring(2, 9)
+    // Use counter for deterministic IDs that won't cause hydration issues
+    counterRef.current += 1
+    const id = `toast_${counterRef.current}_${Date.now()}`
     const newToast: ToastProps = {
       ...toast,
       id,

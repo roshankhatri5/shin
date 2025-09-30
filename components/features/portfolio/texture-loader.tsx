@@ -1,7 +1,7 @@
 'use client'
 
 import { useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three'
+import { TextureLoader as ThreeTextureLoader } from 'three'
 import { Suspense } from 'react'
 
 interface TextureMaterialProps {
@@ -10,7 +10,7 @@ interface TextureMaterialProps {
 }
 
 function TextureMaterial({ imageUrl }: TextureMaterialProps) {
-  const texture = useLoader(TextureLoader, imageUrl)
+  const texture = useLoader(ThreeTextureLoader, imageUrl)
   
   return (
     <meshStandardMaterial 

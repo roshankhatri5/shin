@@ -11,8 +11,7 @@ interface LoadingStateProps {
   loadingComponent?: React.ReactNode
   className?: string
   overlay?: boolean
-  spinnerSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  spinnerVariant?: 'default' | 'dots' | 'heart'
+  spinnerSize?: 'sm' | 'md' | 'lg'
   message?: string
 }
 
@@ -23,7 +22,6 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
   className,
   overlay = false,
   spinnerSize = 'md',
-  spinnerVariant = 'default',
   message = 'Loading...'
 }) => {
   if (!isLoading) {
@@ -32,7 +30,7 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
 
   const defaultLoadingComponent = (
     <div className="flex flex-col items-center justify-center space-y-4 p-8">
-      <Spinner size={spinnerSize} variant={spinnerVariant} color="primary" />
+      <Spinner size={spinnerSize} color="primary" />
       {message && (
         <p className="text-warmgray-600 font-medium text-center">{message}</p>
       )}
@@ -84,17 +82,22 @@ export const SkeletonText = ({
 }: { 
   lines?: number
   className?: string 
-}) => (
-  <div className={cn('space-y-2 animate-pulse', className)}>
-    {Array.from({ length: lines }).map((_, i) => (
-      <div 
-        key={i}
-        className="h-3 bg-pink-100 rounded-full"
-        style={{ width: `${Math.random() * 40 + 60}%` }}
-      />
-    ))}
-  </div>
-)
+}) => {
+  // Use deterministic widths to avoid hydration mismatch
+  const widths = ['60%', '80%', '70%', '90%', '65%', '85%', '75%', '95%']
+  
+  return (
+    <div className={cn('space-y-2 animate-pulse', className)}>
+      {Array.from({ length: lines }).map((_, i) => (
+        <div 
+          key={i}
+          className="h-3 bg-pink-100 rounded-full"
+          style={{ width: widths[i % widths.length] }}
+        />
+      ))}
+    </div>
+  )
+}
 
 export const SkeletonImage = ({ className }: { className?: string }) => (
   <div className={cn(

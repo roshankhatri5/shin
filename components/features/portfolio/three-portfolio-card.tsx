@@ -1,8 +1,8 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { useFrame, useThree, useLoader } from '@react-three/fiber'
-import { RoundedBox, Text, Float, Html } from '@react-three/drei'
+import { useFrame, useLoader } from '@react-three/fiber'
+import { RoundedBox, Text, Float } from '@react-three/drei'
 import { TextureLoader } from 'three'
 import * as THREE from 'three'
 
@@ -29,7 +29,6 @@ export function ThreePortfolioCard({
   const textRef = useRef<THREE.Mesh>(null)
   const [hovered, setHovered] = useState(false)
   const [clicked, setClicked] = useState(false)
-  const { viewport } = useThree()
   
   // Load texture
   const texture = useLoader(TextureLoader, imageUrl)

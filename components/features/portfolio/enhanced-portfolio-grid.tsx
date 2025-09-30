@@ -155,7 +155,7 @@ function EnhancedPortfolioCard({
           className="absolute bottom-0 left-0 right-0 p-6 text-white"
         >
           <Badge 
-            variant="outline" 
+            variant="default" 
             size="sm" 
             className="mb-3 bg-white/20 backdrop-blur-sm border-white/30 text-white"
           >
@@ -221,7 +221,7 @@ export function EnhancedPortfolioGrid({ items, onItemClick }: EnhancedPortfolioG
       >
         <div className="inline-flex bg-white rounded-full p-1 shadow-lg border border-gray-200">
           <Button
-            variant={viewMode === 'grid' ? 'default' : 'ghost'}
+            variant={viewMode === 'grid' ? 'primary' : 'ghost'}
             size="sm"
             onClick={() => setViewMode('grid')}
             className={cn(
@@ -235,7 +235,7 @@ export function EnhancedPortfolioGrid({ items, onItemClick }: EnhancedPortfolioG
             Grid View
           </Button>
           <Button
-            variant={viewMode === '3d' ? 'default' : 'ghost'}
+            variant={viewMode === '3d' ? 'primary' : 'ghost'}
             size="sm"
             onClick={() => setViewMode('3d')}
             className={cn(
@@ -284,6 +284,7 @@ export function EnhancedPortfolioGrid({ items, onItemClick }: EnhancedPortfolioG
                 <div className="text-center py-8">
                   <p className="text-gray-600 mb-4">3D view is not available. Showing enhanced grid instead.</p>
                   <Button
+                    variant="primary"
                     onClick={() => {
                       setViewMode('grid')
                       setThreeJsError(false)

@@ -99,6 +99,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable} ${montserrat.variable} ${dancingScript.variable} ${playfairDisplay.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
+        <noscript>
+          <style>
+            {`
+              [bis_skin_checked] {
+                display: none !important;
+              }
+            `}
+          </style>
+        </noscript>
         <ToastProvider>
           <MainLayout>
             {children}

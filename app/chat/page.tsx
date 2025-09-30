@@ -17,7 +17,7 @@ interface Message {
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: '1',
+      id: 'initial_assistant_message',
       content: "Hello! ✨ I'm Bella, your AI stylist at Elegant Nails. I'm here to help you discover the perfect nail look, answer questions about our services, and assist with booking. What would you like to know? 💅",
       role: 'assistant',
       timestamp: new Date()
@@ -29,6 +29,7 @@ export default function ChatPage() {
   const [isHydrated, setIsHydrated] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const messageCounterRef = useRef(1)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -49,8 +50,9 @@ export default function ChatPage() {
   const sendMessage = async () => {
     if (!inputText.trim() || isLoading) return
 
+    messageCounterRef.current += 1
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: `user_message_${messageCounterRef.current}`,
       content: inputText,
       role: 'user',
       timestamp: new Date()
@@ -113,8 +115,9 @@ You represent a luxury nail salon experience - be knowledgeable, caring, and pro
 
       const data = await response.json()
       
+      messageCounterRef.current += 1
       const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: `assistant_message_${messageCounterRef.current}`,
         content: data.message,
         role: 'assistant',
         timestamp: new Date()
@@ -137,9 +140,10 @@ You represent a luxury nail salon experience - be knowledgeable, caring, and pro
   }
 
   const clearChat = () => {
+    messageCounterRef.current = 1
     setMessages([
       {
-        id: '1',
+        id: 'initial_assistant_message',
         content: "Hello! ✨ I'm Bella, your AI stylist at Elegant Nails. I'm here to help you discover the perfect nail look, answer questions about our services, and assist with booking. What would you like to know? 💅",
         role: 'assistant',
         timestamp: new Date()

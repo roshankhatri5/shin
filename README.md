@@ -1,466 +1,707 @@
-# Elegant Nails - Luxury Nail Salon Website
+<div align="center">
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.4.5-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.3-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-11.0.0-0055FF?logo=framer)](https://www.framer.com/motion/)
+# 💅 Elegant Nails
+### *Luxury Nail Salon Digital Experience*
 
-A sophisticated, production-ready Next.js application for a luxury nail salon business featuring AI-powered customer service, elegant animations, and comprehensive booking management. Built with modern web technologies and a focus on performance, accessibility, and user experience.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15.5.4-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-5.4.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4.3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Framer_Motion-11.0.0-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
+</p>
 
-## 🚀 Live Demo
+<p align="center">
+  <strong>A sophisticated, production-ready digital platform for luxury nail salon businesses</strong><br/>
+  Featuring AI-powered customer service, elegant animations, and comprehensive booking management
+</p>
 
-- **Development**: [http://localhost:3000](http://localhost:3000)
-- **Production**: [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https://github.com/your-repo)
+<p align="center">
+  <a href="#-quick-start">🚀 Quick Start</a> •
+  <a href="#-features">✨ Features</a> •
+  <a href="#-demo">🎯 Live Demo</a> •
+  <a href="#-documentation">📚 Documentation</a>
+</p>
 
-## 📋 Table of Contents
+---
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Quick Start](#-quick-start)
-- [Project Structure](#-project-structure)
-- [Component Library](#-component-library)
-- [AI Chatbot Integration](#-ai-chatbot-integration)
-- [Configuration](#-configuration)
-- [Development Guidelines](#-development-guidelines)
-- [Deployment](#-deployment)
-- [Contributing](#-contributing)
-- [API Documentation](#-api-documentation)
+</div>
+
+## 🎯 Demo
+
+<div align="center">
+
+| Environment | URL | Status |
+|-------------|-----|--------|
+| **🌐 Production** | [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https://github.com/your-repo) | Ready to deploy |
+| **💻 Development** | [localhost:3000](http://localhost:3000) | Local development |
+
+</div>
 
 ## 📊 Project Status
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| 🎨 UI/UX Design System | ✅ Complete | Sophisticated gold/warm theme |
-| 🤖 AI Chatbot (Bella) | ✅ Complete | GLM-4.5-Air powered |
-| 📱 Responsive Design | ✅ Complete | Mobile-first approach |
-| 🎯 Accessibility (WCAG 2.1) | ✅ Complete | AA compliant |
-| 📝 Booking System | 🚧 Frontend Ready | Backend integration needed |
-| 💳 Payment Integration | 📋 Planned | Stripe setup required |
-| 📊 Analytics | 📋 Planned | GA4 integration ready |
+<div align="center">
+
+| Component | Status | Progress | Notes |
+|-----------|--------|----------|-------|
+| 🎨 **Design System** | ✅ Complete | ![100%](https://progress-bar.dev/100) | Sophisticated gold/warm theme |
+| 🤖 **AI Chatbot** | ✅ Complete | ![100%](https://progress-bar.dev/100) | GLM-4.5-Air powered "Bella" |
+| 📱 **Responsive Design** | ✅ Complete | ![100%](https://progress-bar.dev/100) | Mobile-first approach |
+| ♿ **Accessibility** | ✅ Complete | ![100%](https://progress-bar.dev/100) | WCAG 2.1 AA compliant |
+| 📝 **Booking System** | 🚧 Frontend Ready | ![75%](https://progress-bar.dev/75) | Backend integration needed |
+| 💳 **Payment Integration** | 📋 Planned | ![25%](https://progress-bar.dev/25) | Stripe setup required |
+| 📊 **Analytics** | 📋 Planned | ![25%](https://progress-bar.dev/25) | GA4 integration ready |
+
+</div>
+
+## 📋 Table of Contents
+
+<details>
+<summary>📖 <strong>Click to expand navigation</strong></summary>
+
+- [✨ Features](#-features)
+- [🛠 Tech Stack](#-tech-stack)
+- [🚀 Quick Start](#-quick-start)
+- [📁 Project Structure](#-project-structure)
+- [🧩 Component Library](#-component-library)
+- [🤖 AI Integration](#-ai-integration)
+- [⚙️ Configuration](#️-configuration)
+- [👨‍💻 Development](#-development)
+- [🚀 Deployment](#-deployment)
+- [🤝 Contributing](#-contributing)
+- [📚 Documentation](#-documentation)
+- [🔮 Roadmap](#-roadmap)
+- [📄 License](#-license)
+
+</details>
 
 ## ✨ Features
 
-### 🎨 Design System
-- **Elegant Gold Theme**: Sophisticated color palette with warm gold accents and ivory foundations
-- **Typography Hierarchy**: 
-  - **Display**: Cormorant Garamond (elegant serif for headlines)
-  - **Headings**: Montserrat (modern sans-serif)
-  - **Body**: Inter (clean, readable sans-serif)
-- **Advanced Animations**: Framer Motion with `prefers-reduced-motion` support
-- **Glass Morphism**: Backdrop blur effects and luxury shadow systems
-- **Mobile-First Responsive**: Optimized for all screen sizes
+<div align="center">
 
-### 🤖 AI Chatbot - "Bella"
-- **GLM-4.5-Air Integration**: Powered by advanced language model
-- **Feminine Personality**: Warm, encouraging, and nail-art focused responses
-- **Smart Responses**: Contextual understanding of salon services and pricing
-- **24/7 Availability**: Always-on customer support
-- **Accessible Interface**: Full keyboard navigation and screen reader support
+### 🎨 **Elegant Design System**
+*Sophisticated UI/UX with luxury aesthetics*
 
-### 📱 Core Features
-- **Service Catalog**: Comprehensive nail services with pricing and descriptions
-- **Portfolio Gallery**: Filterable showcase of nail art and designs
-- **Team Profiles**: Meet our nail technicians with specialties and experience
-- **Booking System**: Multi-step appointment booking with date/time selection
-- **Contact Forms**: Inquiry and newsletter subscription with validation
-- **FAQ Section**: Common questions with expandable answers
+</div>
 
-### ♿ Accessibility & Performance
-- **WCAG 2.1 AA Compliant**: Full accessibility standards compliance
-- **Semantic HTML**: Proper heading hierarchy and ARIA labels
-- **Focus Management**: Visible focus indicators and keyboard navigation
-- **Performance Optimized**: 
-  - Next.js App Router with Server Components
-  - Image optimization with next/image
-  - Code splitting and lazy loading
-  - Lighthouse scores: 90+ across all metrics
+| Feature | Description | Implementation |
+|---------|-------------|----------------|
+| **🎨 Color Palette** | Sophisticated gold & warm tones | 20+ carefully crafted shade variations |
+| **📝 Typography** | Three-tier font hierarchy | Cormorant Garamond, Montserrat, Inter |
+| **✨ Animations** | Smooth micro-interactions | Framer Motion with reduced-motion support |
+| **🔮 Glass Morphism** | Modern backdrop blur effects | Luxury shadow systems & elegant overlays |
 
-### 🔧 Developer Experience
-- **TypeScript**: Full type safety across the application
-- **ESLint & Prettier**: Code quality and formatting
-- **Component Library**: 20+ reusable UI components
-- **Design Tokens**: Consistent spacing, colors, and typography
-- **Hot Reload**: Fast development with Turbopack
+<div align="center">
+
+### 🤖 **AI-Powered Customer Service**
+*Meet "Bella" - Your intelligent salon assistant*
+
+</div>
+
+| Capability | Technology | Benefits |
+|------------|------------|----------|
+| **🧠 Natural Language** | GLM-4.5-Air Integration | Contextual understanding & smart responses |
+| **💬 24/7 Support** | Real-time chat interface | Always-available customer assistance |
+| **🎯 Service Knowledge** | Pre-trained salon expertise | Accurate pricing, booking & service info |
+| **♿ Accessibility** | Full keyboard navigation | Screen reader support & ARIA compliance |
+
+<div align="center">
+
+### 📱 **Core Business Features**
+*Everything your salon needs to succeed online*
+
+</div>
+
+<table align="center">
+<tr>
+<td width="33%" align="center">
+
+**📅 Booking System**
+- Multi-step wizard interface
+- Date/time selection
+- Service & technician choice
+- Customer information capture
+
+</td>
+<td width="33%" align="center">
+
+**🖼️ Portfolio Gallery**
+- Filterable nail art showcase
+- High-quality image optimization
+- Lightbox viewing experience
+- Category-based organization
+
+</td>
+<td width="33%" align="center">
+
+**👥 Team Profiles**
+- Technician specialties
+- Experience highlights
+- Professional photos
+- Booking integration
+
+</td>
+</tr>
+</table>
 
 ## 🛠 Tech Stack
 
-### Core Framework
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Next.js** | 15.5.4 | React framework with App Router |
-| **React** | 18.3.0 | UI library with concurrent features |
-| **TypeScript** | 5.4.5 | Static type checking |
+<div align="center">
 
-### Styling & Animation
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Tailwind CSS** | 3.4.3 | Utility-first CSS framework |
-| **Framer Motion** | 11.0.0 | Advanced animations |
-| **Lucide React** | 0.368.0 | SVG icon library |
+### **Frontend Foundation**
 
-### Forms & Validation
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **React Hook Form** | 7.51.0 | Performant form management |
-| **Zod** | 3.23.0 | Schema validation |
-| **@hookform/resolvers** | 3.3.4 | RHF + Zod integration |
+</div>
 
-### Development Tools
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **ESLint** | 8.57.0 | Code linting |
-| **Prettier** | 3.2.5 | Code formatting |
-| **Turbopack** | Built-in | Fast bundler (dev) |
+| Technology | Version | Purpose | Benefits |
+|------------|---------|---------|----------|
+| ![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black?style=flat-square&logo=next.js) | **15.5.4** | React Framework | App Router, SSR, Performance |
+| ![React](https://img.shields.io/badge/React-18.3.0-61DAFB?style=flat-square&logo=react) | **18.3.0** | UI Library | Concurrent Features, Hooks |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-5.4.5-3178C6?style=flat-square&logo=typescript) | **5.4.5** | Type Safety | Strict Mode, Better DX |
+
+<div align="center">
+
+### **Styling & Animation**
+
+</div>
+
+| Technology | Version | Purpose | Benefits |
+|------------|---------|---------|----------|
+| ![Tailwind](https://img.shields.io/badge/Tailwind-3.4.3-38B2AC?style=flat-square&logo=tailwind-css) | **3.4.3** | CSS Framework | Utility-first, Responsive |
+| ![Framer Motion](https://img.shields.io/badge/Framer_Motion-11.0.0-0055FF?style=flat-square&logo=framer) | **11.0.0** | Animations | Advanced transitions, gestures |
+| ![Lucide](https://img.shields.io/badge/Lucide-0.368.0-F56565?style=flat-square) | **0.368.0** | Icons | SVG icons, tree-shakable |
+
+<div align="center">
+
+### **Form & Validation**
+
+</div>
+
+| Technology | Version | Purpose | Benefits |
+|------------|---------|---------|----------|
+| ![React Hook Form](https://img.shields.io/badge/React_Hook_Form-7.51.0-EC5990?style=flat-square) | **7.51.0** | Form Management | Performant, minimal re-renders |
+| ![Zod](https://img.shields.io/badge/Zod-3.23.0-3E67B1?style=flat-square) | **3.23.0** | Schema Validation | Type-safe validation |
 
 ## 🚀 Quick Start
 
-### Prerequisites
+<div align="center">
+
+### **Get up and running in 5 minutes**
+
+</div>
+
+### 📋 Prerequisites
 
 ```bash
+# Required versions
 node >= 18.17.0
 npm >= 9.6.7
 ```
 
-### Installation
+### ⚡ Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/elegant-nails.git
-   cd elegant-nails
-   ```
+<details>
+<summary><strong>📥 Step 1: Clone & Install</strong></summary>
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/your-username/elegant-nails.git
+cd elegant-nails
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   **Required environment variables:**
-   ```env
-   # AI Chatbot (Bella)
-   GLM_API_KEY=your_glm_api_key
-   GLM_BASE_URL=https://llm.chutes.ai/v1/chat/completions
-   GLM_MODEL=zai-org/GLM-4.5-Air
-   ```
+# Install dependencies
+npm install
+```
 
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
+</details>
 
-5. **Open your browser**
-   ```
-   http://localhost:3000
-   ```
+<details>
+<summary><strong>⚙️ Step 2: Environment Setup</strong></summary>
 
-### Available Scripts
+```bash
+# Copy environment template
+cp .env.example .env.local
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with Turbopack |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run type-check` | Run TypeScript compiler check |
+# Edit your environment variables
+nano .env.local
+```
 
-### First-Time Setup Checklist
+**Required Environment Variables:**
+```env
+# AI Chatbot Configuration
+GLM_API_KEY=your_glm_api_key_here
+GLM_BASE_URL=https://llm.chutes.ai/v1/chat/completions
+GLM_MODEL=zai-org/GLM-4.5-Air
 
-- [ ] Environment variables configured
-- [ ] Development server running
-- [ ] AI chatbot functional (test at `/chat`)
-- [ ] All pages loading without errors
-- [ ] Responsive design working on mobile
+# Optional: Analytics & Monitoring
+NEXT_PUBLIC_GA_ID=your_google_analytics_id
+```
+
+</details>
+
+<details>
+<summary><strong>🚀 Step 3: Launch Development</strong></summary>
+
+```bash
+# Start development server
+npm run dev
+
+# Open in browser
+open http://localhost:3000
+```
+
+</details>
+
+### 🎯 Verification Checklist
+
+- [ ] ✅ Development server running on `localhost:3000`
+- [ ] 🤖 AI chatbot accessible at `/chat`
+- [ ] 📱 Responsive design working on mobile
+- [ ] ♿ Accessibility features functioning
+- [ ] 🎨 All animations and transitions smooth
+
+### 📝 Available Scripts
+
+| Command | Description | Use Case |
+|---------|-------------|----------|
+| `npm run dev` | Start development server | Daily development |
+| `npm run build` | Build for production | Pre-deployment |
+| `npm run start` | Start production server | Production testing |
+| `npm run lint` | Run ESLint checks | Code quality |
+| `npm run type-check` | TypeScript validation | Type safety |
 
 ## 📁 Project Structure
 
+<div align="center">
+
+### **Organized for scalability and maintainability**
+
+</div>
+
 ```
 elegant-nails/
-├── app/                    # Next.js App Router pages
-│   ├── (routes)/          # Page components
-│   ├── api/               # API endpoints
-│   └── globals.css        # Global styles
-├── components/            # React components
-│   ├── ui/               # Base UI components
-│   ├── features/         # Feature-specific components
-│   └── layouts/          # Layout components
-├── docs/                 # Documentation
-│   ├── API_DOCUMENTATION.md
-│   ├── COMPONENT_LIBRARY.md
-│   ├── CONTRIBUTING.md
-│   ├── DEPLOYMENT.md
-│   └── PROJECT_STRUCTURE.md
-├── hooks/                # Custom React hooks
-├── lib/                  # Utilities and constants
-│   ├── constants/        # Static data
-│   └── schemas/          # Validation schemas
-├── types/                # TypeScript definitions
-└── public/               # Static assets
+├── 📱 app/                     # Next.js App Router
+│   ├── 🏠 (routes)/           # Page components
+│   ├── 🔌 api/                # API endpoints
+│   ├── 🎨 globals.css         # Global styles
+│   └── 📄 layout.tsx          # Root layout
+│
+├── 🧩 components/             # React components
+│   ├── 🎨 ui/                 # Base UI components
+│   ├── ⭐ features/           # Feature-specific components
+│   └── 📐 layouts/            # Layout components
+│
+├── 📚 docs/                   # Documentation
+│   ├── 📖 API_DOCUMENTATION.md
+│   ├── 🧩 COMPONENT_LIBRARY.md
+│   ├── 🤝 CONTRIBUTING.md
+│   ├── 🚀 DEPLOYMENT.md
+│   └── 📁 PROJECT_STRUCTURE.md
+│
+├── 🪝 hooks/                  # Custom React hooks
+├── 📦 lib/                    # Utilities & constants
+│   ├── 📊 constants/          # Static data
+│   └── ✅ schemas/            # Validation schemas
+│
+├── 🏷️ types/                  # TypeScript definitions
+└── 🌍 public/                # Static assets
 ```
 
-See [📁 Project Structure Documentation](./docs/PROJECT_STRUCTURE.md) for detailed information.
+<details>
+<summary><strong>📖 Detailed Structure Guide</strong></summary>
+
+### **🎯 Key Directories**
+
+| Directory | Purpose | Contains |
+|-----------|---------|----------|
+| `app/` | Next.js routing | Pages, layouts, API routes |
+| `components/ui/` | Base components | Buttons, inputs, modals |
+| `components/features/` | Business logic | Booking, portfolio, contact |
+| `lib/constants/` | Static data | Services, testimonials, FAQ |
+| `hooks/` | Reusable logic | Custom React hooks |
+
+</details>
+
+## 🧩 Component Library
+
+<div align="center">
+
+### **20+ Professional Components Ready to Use**
+
+</div>
+
+<table align="center">
+<tr>
+<td width="50%">
+
+### **🎨 UI Components**
+- **Button** - 10 variants with loading states
+- **Card** - 9 variants with glass morphism
+- **Input** - Enhanced with validation
+- **Modal** - Accessible with focus management
+- **Badge** - Status and category indicators
+- **Tooltip** - Elegant hover information
+- **Accordion** - Expandable content sections
+
+</td>
+<td width="50%">
+
+### **⭐ Feature Components**
+- **BookingWizard** - Multi-step appointment flow
+- **PortfolioGrid** - Filterable image gallery
+- **HeroSection** - Landing page hero with parallax
+- **ContactForm** - Validated contact forms
+- **Navigation** - Responsive header with mobile menu
+- **AIchatbot** - Intelligent customer service
+- **TestimonialSlider** - Customer review carousel
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+
+📖 **[View Complete Component Documentation](./docs/COMPONENT_LIBRARY.md)**
+
+</div>
+
+## 🤖 AI Integration
+
+<div align="center">
+
+### **Meet "Bella" - Your AI Salon Assistant**
+
+</div>
+
+<table align="center">
+<tr>
+<td width="50%" align="center">
+
+**🧠 Intelligence Features**
+- Natural language understanding
+- Context-aware responses
+- Service expertise knowledge
+- Booking assistance capability
+- 24/7 availability
+
+</td>
+<td width="50%" align="center">
+
+**💬 User Experience**
+- Elegant chat interface
+- Typing indicators
+- Mobile-optimized design
+- Accessibility compliance
+- Error handling & fallbacks
+
+</td>
+</tr>
+</table>
+
+### **🎯 Use Cases**
+
+| Scenario | Bella's Response | Benefit |
+|----------|------------------|---------|
+| **"What services do you offer?"** | Detailed service menu with pricing | Instant information |
+| **"Can I book an appointment?"** | Guided booking assistance | Conversion optimization |
+| **"What are your hours?"** | Current hours & availability | Quick answers |
+| **"How much does a manicure cost?"** | Specific pricing information | Transparency |
+
+## ⚙️ Configuration
+
+<div align="center">
+
+### **Environment Variables & Settings**
+
+</div>
+
+<details>
+<summary><strong>🔧 Required Configuration</strong></summary>
+
+```env
+# AI Chatbot (Required)
+GLM_API_KEY=your_glm_api_key_here
+GLM_BASE_URL=https://llm.chutes.ai/v1/chat/completions
+GLM_MODEL=zai-org/GLM-4.5-Air
+
+# Optional: Analytics
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+
+# Optional: Contact Form
+RESEND_API_KEY=your_resend_key_here
+CONTACT_EMAIL=hello@elegantنails.com
 ```
 
-3. **Open your browser**
-Navigate to [http://localhost:3000](http://localhost:3000) (or available port shown in terminal)
+</details>
 
-### Production Build
+<details>
+<summary><strong>🎨 Customization Options</strong></summary>
+
+### **Color Themes**
+Modify `tailwind.config.ts` to customize the color palette:
+
+```typescript
+// Custom color scheme
+colors: {
+  primary: '#d4a574',    // Sophisticated Pink
+  secondary: '#e6945a',  // Soft Blush
+  accent: '#f2d574',     // Subtle Gold
+  neutral: '#f8f5f0',    // Elegant Ivory
+}
+```
+
+### **Typography**
+Update font families in `app/globals.css`:
+
+```css
+/* Custom font imports */
+@import url('https://fonts.googleapis.com/css2?family=Your-Font');
+```
+
+</details>
+
+## 👨‍💻 Development
+
+<div align="center">
+
+### **Development Guidelines & Best Practices**
+
+</div>
+
+### **📏 Code Standards**
+
+| Aspect | Standard | Tool |
+|--------|----------|------|
+| **Code Style** | Prettier formatting | `.prettierrc` |
+| **Linting** | ESLint rules | `.eslintrc.json` |
+| **Type Safety** | TypeScript strict mode | `tsconfig.json` |
+| **Imports** | Path mapping with `@/` | TypeScript paths |
+
+### **🏗️ Component Development**
+
+<details>
+<summary><strong>🧩 Component Structure</strong></summary>
+
+```typescript
+// components/ui/example-component.tsx
+interface ExampleComponentProps {
+  title: string;
+  variant?: 'primary' | 'secondary';
+  onClick?: () => void;
+}
+
+export const ExampleComponent: React.FC<ExampleComponentProps> = ({
+  title,
+  variant = 'primary',
+  onClick
+}) => {
+  return (
+    <button
+      className={cn(
+        'base-styles',
+        variant === 'primary' && 'primary-styles',
+        variant === 'secondary' && 'secondary-styles'
+      )}
+      onClick={onClick}
+    >
+      {title}
+    </button>
+  );
+};
+```
+
+</details>
+
+### **🧪 Testing Strategy**
+
+| Type | Framework | Coverage |
+|------|-----------|----------|
+| **Unit Tests** | Jest + Testing Library | Components, utilities |
+| **Integration** | Cypress | User flows |
+| **E2E** | Playwright | Critical paths |
+| **Visual** | Chromatic | UI consistency |
+
+## 🚀 Deployment
+
+<div align="center">
+
+### **Production-Ready Deployment**
+
+</div>
+
+### **☁️ Recommended Platforms**
+
+<table align="center">
+<tr>
+<td width="33%" align="center">
+
+**🔺 Vercel**
+- Optimized for Next.js
+- Automatic deployments
+- Edge functions
+- Analytics included
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-repo)
+
+</td>
+<td width="33%" align="center">
+
+**🌐 Netlify**
+- JAMstack optimization
+- Form handling
+- CDN distribution
+- Branch previews
+
+</td>
+<td width="33%" align="center">
+
+**☁️ AWS Amplify**
+- Full-stack platform
+- CI/CD pipeline
+- Custom domains
+- SSL certificates
+
+</td>
+</tr>
+</table>
+
+### **⚡ Performance Optimization**
+
+| Metric | Target | Implementation |
+|--------|--------|----------------|
+| **First Contentful Paint** | < 1.5s | Optimized fonts, critical CSS |
+| **Largest Contentful Paint** | < 2.0s | Image optimization, lazy loading |
+| **Cumulative Layout Shift** | < 0.1 | Proper dimensions, font loading |
+| **First Input Delay** | < 50ms | Minimal JavaScript, efficient handlers |
+
+<details>
+<summary><strong>🏗️ Build Process</strong></summary>
 
 ```bash
-# Build the application
+# Production build
 npm run build
 
-# Start production server  
+# Analyze bundle size
+npm run analyze
+
+# Start production server
 npm run start
 
-# Or build and start in one command
-npm run build && npm run start
+# Health check
+curl http://localhost:3000/api/health
 ```
 
-### Additional Development Scripts
+</details>
 
-```bash
-# Type checking with detailed output
-npm run type-check
+## 🔮 Roadmap
 
-# Linting with Next.js best practices
-npm run lint
+<div align="center">
 
-# Auto-fix linting issues  
-npm run lint --fix
+### **Future Development Phases**
 
-# Development with Turbopack (faster)
-npm run dev --turbo
-```
+</div>
 
-## 🎨 Sophisticated Design System
+<table align="center">
+<tr>
+<td width="33%">
 
-### Color Palette Philosophy
+### **🚀 Phase 2: Backend**
+*Q2 2024*
 
-The application features a carefully curated sophisticated feminine color palette designed to evoke elegance, warmth, and luxury:
+- [ ] Database integration (Supabase)
+- [ ] Authentication system
+- [ ] Payment processing (Stripe)
+- [ ] Email notifications
+- [ ] Admin dashboard
 
-**Primary Colors:**
-- **Sophisticated Pink** (`#d4a574`): Main brand color for primary actions and emphasis
-- **Soft Blush** (`#e6945a`): Secondary color for gentle highlights and accents
-- **Muted Rose** (`#c18787`): Tertiary color for subtle backgrounds and borders
-- **Elegant Ivory** (`#f8f5f0`): Warm neutral base for backgrounds and content areas
-- **Subtle Gold** (`#f2d574`): Luxury accent for premium features and highlights
-- **Warm Gray** (`#a8a8a7`): Modern neutral for secondary text and interfaces
-- **Deep Charcoal** (`#2c2826`): Sophisticated dark tone for primary text and contrast
+</td>
+<td width="33%">
 
-Each color includes 20+ carefully crafted shade variations (50-950) providing designers with complete flexibility while maintaining visual harmony.
+### **⭐ Phase 3: Advanced**
+*Q3 2024*
 
-### Typography Excellence
+- [ ] Real-time booking
+- [ ] Staff management
+- [ ] Customer portal
+- [ ] Analytics dashboard
+- [ ] Review system
 
-**Font Strategy:**
-- **Display Font**: Cormorant Garamond - Elegant serif for hero headlines and major statements
-- **Heading Font**: Montserrat - Modern sans-serif for section titles and navigation
-- **Body Font**: Inter - Highly legible sans-serif for content and UI elements
-- **Comprehensive Scale**: 15+ sizes from 12px (body-xs) to 72px (display-2xl)
+</td>
+<td width="33%">
 
-### 🧩 Component Library
+### **🌟 Phase 4: Enhanced**
+*Q4 2024*
 
-Our comprehensive component library includes 20+ reusable components:
+- [ ] Progressive Web App
+- [ ] Push notifications
+- [ ] Multi-language support
+- [ ] Advanced search
+- [ ] Calendar integration
 
-### Core UI Components
-- **Button**: 10 variants with loading states and animations
-- **Card**: 9 variants with glass morphism and luxury shadows
-- **EnhancedInput**: Advanced input fields with validation
-- **Modal**: Accessible modals with focus management
-- **Badge**: Status and category indicators
-
-### Layout Components
-- **Navigation**: Responsive header with mobile menu
-- **Footer**: Site footer with newsletter signup
-- **MainLayout**: Consistent page wrapper
-
-### Feature Components
-- **BookingWizard**: Multi-step appointment booking
-- **PortfolioGrid**: Filterable image gallery
-- **HeroSection**: Landing page hero with parallax
-- **ContactForm**: Contact form with validation
-
-See [📖 Component Library Documentation](./docs/COMPONENT_LIBRARY.md) for detailed usage.
-
-## 🤖 AI Chatbot Integration
-
-### Advanced Features
-- **Contextual Understanding**: Intelligent parsing of customer inquiries with relevant responses
-- **Quick Response System**: Pre-configured answers for common salon questions (services, pricing, booking, hours)
-- **Elegant Interface**: Sophisticated chat UI with glass morphism effects and smooth animations
-- **Accessibility**: Full keyboard navigation, screen reader support, and focus management
-- **Real-time Typing**: Animated typing indicators with realistic response delays
-- **24/7 Availability**: Always-accessible customer support with notification systems
-
-### Intelligent Response System
-The chatbot includes sophisticated natural language processing for:
-- Service inquiries and detailed information
-- Booking assistance and appointment scheduling
-- Pricing information and package details
-- Salon hours and availability
-- General customer support and navigation help
-
-### Technical Implementation
-- Real-time message handling with optimistic UI updates
-- Elegant animations using Framer Motion
-- Proper error handling and graceful degradation
-- Mobile-optimized interface with touch-friendly interactions
-- Comprehensive ARIA labels and accessibility features
-
-## 📱 Enhanced Navigation System
-
-### Desktop Navigation
-- **Sophisticated Header**: Glass morphism effect with elegant backdrop blur
-- **Smart Scrolling**: Dynamic styling changes based on scroll position
-- **Active States**: Elegant gradient underlines with smooth transitions
-- **Hover Effects**: Subtle animations with scale and shadow changes
-
-### Mobile Experience  
-- **Slide Animation**: Smooth slide-in menu with spring physics
-- **Backdrop Blur**: Sophisticated background effects with overlay
-- **Touch Optimization**: Large tap targets and gesture-friendly interactions
-- **Progressive Enhancement**: Graceful degradation for various devices
-
-## 🎯 Performance Optimizations
-
-### Core Web Vitals Excellence
-- **First Contentful Paint**: < 1.5s with optimized fonts and critical CSS
-- **Largest Contentful Paint**: < 2.0s with image optimization and lazy loading  
-- **Cumulative Layout Shift**: < 0.1 with proper image dimensions and font loading
-- **First Input Delay**: < 50ms with minimal JavaScript and efficient event handlers
-
-### Advanced Optimization Techniques
-- **Image Optimization**: Next.js Image with AVIF/WebP formats and responsive sizing
-- **Code Splitting**: Dynamic imports for heavy components and libraries
-- **Tree Shaking**: Automatic removal of unused code and dependencies  
-- **Bundle Analysis**: Optimized dependencies and minimal JavaScript footprint
-- **Caching Strategy**: Intelligent browser and CDN caching with ISR support
-
-## 🔧 Advanced Development Features
-
-### Enhanced Developer Experience
-- **TypeScript Strict Mode**: Comprehensive type checking with detailed error reporting
-- **Path Mapping**: Intelligent imports with @ aliases for clean organization
-- **Hot Reloading**: Fast refresh for rapid development cycles
-- **Error Boundaries**: Graceful error handling with recovery suggestions
-- **Code Quality**: ESLint + Prettier with sophisticated rule sets
-
-### Component Development
-- **Atomic Design**: Clear hierarchy from atoms to organisms with consistent patterns
-- **Storybook Ready**: Components designed for isolated development and testing
-- **Testing Support**: Props and behaviors optimized for comprehensive testing
-- **Documentation**: Inline comments and usage examples throughout
-
-### Build System
-- **Turbopack Integration**: Next-generation bundler for lightning-fast builds
-- **Bundle Optimization**: Advanced tree-shaking and code splitting
-- **Asset Pipeline**: Optimized images, fonts, and static assets
-- **Environment Management**: Sophisticated environment variable handling
-
-## 🌐 Browser Support & Compatibility
-
-### Modern Browser Requirements
-- **Chrome/Edge**: Version 90+ (Chromium-based browsers with full feature support)
-- **Firefox**: Version 88+ with comprehensive compatibility  
-- **Safari**: Version 14+ including iOS 14+ with WebKit optimizations
-- **Mobile**: iOS 14+, Android 8+ with progressive enhancement
-
-### Progressive Enhancement Strategy
-- **Core Functionality**: Works without JavaScript for basic navigation
-- **Enhanced Features**: JavaScript-enabled features with graceful degradation
-- **Accessibility**: Full support for assistive technologies and screen readers
-- **Performance**: Optimized loading strategies for various connection speeds
-
-## 🚀 Deployment & Production
-
-### Recommended Deployment
-- **Vercel Platform**: Optimized for Next.js with automatic optimizations
-- **CDN Integration**: Global content delivery with edge caching
-- **Environment Management**: Secure environment variable handling
-- **Analytics Integration**: Built-in performance monitoring and user analytics
-
-### Production Optimizations
-- **Static Generation**: ISR for optimal performance and SEO
-- **Edge Functions**: Serverless functions with global distribution
-- **Image CDN**: Automatic image optimization and transformation
-- **Cache Headers**: Intelligent caching strategies for optimal performance
-
-## 🔮 Future Roadmap
-
-### Phase 2: Backend Integration
-- **Database**: Supabase PostgreSQL with Drizzle ORM for type-safe queries
-- **Authentication**: NextAuth.js with multiple providers and role-based access
-- **CMS Integration**: Sanity.io for content management with real-time updates  
-- **Payment Processing**: Stripe integration for deposits, packages, and gift cards
-- **Email System**: Resend for transactional emails and marketing automation
-
-### Phase 3: Advanced Features  
-- **Real-time Booking**: Live availability with conflict prevention and notifications
-- **Staff Management**: Comprehensive admin dashboard with appointment management
-- **Customer Portal**: Account management with appointment history and preferences
-- **Analytics Dashboard**: Advanced reporting and business intelligence
-- **Review System**: Integrated review management with social proof automation
-
-### Phase 4: Enhanced Experience
-- **Progressive Web App**: Offline support with app-like installation experience
-- **Push Notifications**: Smart reminders and promotional notifications  
-- **Multi-language**: Internationalization with i18next and regional customization
-- **Advanced Search**: Full-text search with intelligent filters and suggestions
-- **Calendar Integration**: Two-way sync with Google Calendar and scheduling apps
-- **AI Enhancement**: Advanced AI features with machine learning recommendations
+</td>
+</tr>
+</table>
 
 ## 🤝 Contributing
 
-### Getting Started
-1. Fork the repository and create a feature branch
-2. Follow existing component patterns and naming conventions  
-3. Maintain TypeScript strict mode compliance
-4. Add proper accessibility attributes to interactive elements
-5. Test responsive behavior across multiple breakpoints
-6. Ensure animations respect motion preferences
-7. Update documentation for new components or features
+<div align="center">
 
-### Development Guidelines  
-- **Component Patterns**: Follow atomic design principles with consistent structure
-- **TypeScript**: Implement proper interfaces for all props and state
-- **Accessibility**: Include comprehensive ARIA labels and keyboard navigation
-- **Performance**: Optimize images and minimize bundle impact
-- **Testing**: Write comprehensive tests for critical functionality
-- **Documentation**: Include JSDoc comments and usage examples
+### **Join Our Development Community**
 
-### Code Quality Standards
-- **Tailwind Utilities**: Prefer utility classes over custom CSS when possible
-- **Consistent Naming**: Follow established patterns for files and components
-- **Error Handling**: Implement proper error boundaries and user feedback
-- **Security**: Follow security best practices for user data and authentication
-- **SEO**: Maintain semantic HTML and proper meta tag implementation
+</div>
 
-## 📄 License & Attribution
+We welcome contributions! Please see our [Contributing Guide](./docs/CONTRIBUTING.md) for details.
 
-**License**: This project is proprietary. All rights reserved.
+### **🔄 Contribution Workflow**
 
-**Design Inspiration**: Contemporary feminine aesthetics and luxury spa industry standards  
-**Technical Foundation**: Built on Next.js, React, and modern web development practices  
-**Open Source**: Leverages the incredible work of the open source community
+1. **🍴 Fork** the repository
+2. **🌿 Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **💻 Develop** with our coding standards
+4. **✅ Test** your changes thoroughly
+5. **📝 Commit** with conventional commits (`git commit -m 'feat: add amazing feature'`)
+6. **🚀 Push** to your branch (`git push origin feature/amazing-feature`)
+7. **📬 Submit** a Pull Request
+
+### **👥 Contributors**
+
+<div align="center">
+
+[![Contributors](https://contrib.rocks/image?repo=your-username/elegant-nails)](https://github.com/your-username/elegant-nails/graphs/contributors)
+
+</div>
+
+## 📚 Documentation
+
+<div align="center">
+
+### **Comprehensive Project Documentation**
+
+</div>
+
+| Document | Description | Status |
+|----------|-------------|--------|
+| 📖 [API Documentation](./docs/API_DOCUMENTATION.md) | REST API endpoints & schemas | ✅ Complete |
+| 🧩 [Component Library](./docs/COMPONENT_LIBRARY.md) | UI components & usage | ✅ Complete |
+| 🤝 [Contributing Guide](./docs/CONTRIBUTING.md) | Development guidelines | ✅ Complete |
+| 🚀 [Deployment Guide](./docs/DEPLOYMENT.md) | Production deployment | ✅ Complete |
+| 🔒 [Security Guide](./docs/SECURITY.md) | Security best practices | ✅ Complete |
+| 📁 [Project Structure](./docs/PROJECT_STRUCTURE.md) | Architecture overview | ✅ Complete |
+
+## 📄 License
+
+<div align="center">
+
+**This project is proprietary.** All rights reserved.
 
 ---
 
-## 💎 About This Project
+### 💎 **About Elegant Nails**
 
-This sophisticated nail salon application represents the pinnacle of modern web development, combining:
-
-- ✨ **Elegant Design**: Sophisticated feminine aesthetics with luxury touch points
-- 🚀 **Cutting-edge Technology**: Latest Next.js 15 with advanced optimizations  
-- 🤖 **AI Integration**: Smart customer service with contextual understanding
-- ♿ **Universal Accessibility**: WCAG 2.1 AA compliance with comprehensive support
-- 📱 **Responsive Excellence**: Flawless experience across all devices and screen sizes
-- 🎯 **Performance Optimization**: Core Web Vitals excellence with sub-2s loading times
+*This sophisticated nail salon application represents the pinnacle of modern web development, combining elegant design, cutting-edge technology, AI integration, universal accessibility, and performance excellence.*
 
 **Perfect for:** Beauty salons, spa businesses, luxury service providers, or any business requiring elegant, sophisticated web presence with advanced customer interaction capabilities.
 
 ---
 
-*Experience the future of beauty business websites with sophisticated design, AI-powered customer service, and unmatched performance.* ✨💅🏻
+**Built with ❤️ using Next.js, React, TypeScript, and modern web technologies**
+
+*Experience the future of beauty business websites* ✨💅
+
+</div>

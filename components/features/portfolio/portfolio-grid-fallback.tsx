@@ -103,7 +103,7 @@ function PortfolioCard({
         {/* Content Overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <Badge 
-            variant="outline" 
+            variant="default" 
             size="sm" 
             className="mb-3 bg-white/20 backdrop-blur-sm border-white/30 text-white"
           >
