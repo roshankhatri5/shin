@@ -10,6 +10,7 @@ import * as THREE from 'three'
 interface ThreePortfolioSceneProps {
   items: PortfolioItem[]
   onItemClick: (item: PortfolioItem) => void
+  onError?: () => void
 }
 
 function CameraRig() {
@@ -108,8 +109,13 @@ function SceneLighting() {
   )
 }
 
-export function ThreePortfolioScene({ items, onItemClick }: ThreePortfolioSceneProps) {
+export function ThreePortfolioScene({ items, onItemClick, onError }: ThreePortfolioSceneProps) {
   const [isLoading, setIsLoading] = useState(true)
+
+  const handleError = () => {
+    console.warn('Three.js failed to load, falling back to 2D grid')
+    onError?.()
+  }
 
   return (
     <div className="w-full h-[600px] relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
@@ -118,6 +124,7 @@ export function ThreePortfolioScene({ items, onItemClick }: ThreePortfolioSceneP
         dpr={[1, 2]}
         gl={{ antialias: true }}
         onCreated={() => setIsLoading(false)}
+        onError={handleError}
       >
         <Suspense fallback={null}>
           <CameraRig />
@@ -158,12 +165,9 @@ export function ThreePortfolioScene({ items, onItemClick }: ThreePortfolioSceneP
       {/* Loading overlay */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
-          <div className="text-white text-lg font-medium">Loading Portfolio...</div>
+          <div className="text-white text-lg font-medium animate-pulse">Loading 3D Portfolio...</div>
         </div>
       )}
-      
-      {/* Loader */}
-      <Loader />
     </div>
   )
 }

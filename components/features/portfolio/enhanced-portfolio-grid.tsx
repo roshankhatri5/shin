@@ -1,14 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense, lazy } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { PortfolioItem } from '@/lib/constants/portfolio'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Grid3x3, Boxes, Eye, Heart } from 'lucide-react'
-import { ThreePortfolioScene } from './three-portfolio-scene'
+import { PortfolioGridFallback } from './portfolio-grid-fallback'
 import { cn } from '@/lib/utils'
+
+// Dynamically import Three.js component
+const ThreePortfolioScene = lazy(() => 
+  import('./three-portfolio-scene').then(module => ({ 
+    default: module.ThreePortfolioScene 
+  }))
+)
 
 interface EnhancedPortfolioGridProps {
   items: PortfolioItem[]
@@ -186,6 +193,7 @@ function EnhancedPortfolioCard({
 
 export function EnhancedPortfolioGrid({ items, onItemClick }: EnhancedPortfolioGridProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
+  const [threeJsError, setThreeJsError] = useState(false)
 
   if (items.length === 0) {
     return (
@@ -271,7 +279,37 @@ export function EnhancedPortfolioGrid({ items, onItemClick }: EnhancedPortfolioG
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3 }}
           >
-            <ThreePortfolioScene items={items} onItemClick={onItemClick} />
+            {threeJsError ? (
+              <div className="space-y-4">
+                <div className="text-center py-8">
+                  <p className="text-gray-600 mb-4">3D view is not available. Showing enhanced grid instead.</p>
+                  <Button
+                    onClick={() => {
+                      setViewMode('grid')
+                      setThreeJsError(false)
+                    }}
+                    className="bg-gradient-to-r from-pink-500 to-purple-600 text-white"
+                  >
+                    Switch to Grid View
+                  </Button>
+                </div>
+                <PortfolioGridFallback items={items} onItemClick={onItemClick} />
+              </div>
+            ) : (
+              <Suspense 
+                fallback={
+                  <div className="w-full h-[600px] rounded-3xl bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center">
+                    <div className="text-white text-lg font-medium animate-pulse">Loading 3D Portfolio...</div>
+                  </div>
+                }
+              >
+                <ThreePortfolioScene 
+                  items={items} 
+                  onItemClick={onItemClick}
+                  onError={() => setThreeJsError(true)}
+                />
+              </Suspense>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
