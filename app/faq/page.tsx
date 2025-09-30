@@ -56,7 +56,7 @@ export default function FAQPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative bg-gradient-to-br from-rose-gold-50 via-blush-50 to-lavender-50 py-16 md:py-24">
+      <section className="relative bg-gradient-to-br from-pink/10 via-blush/10 to-rose/10 py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={slideUp}
@@ -66,9 +66,9 @@ export default function FAQPage() {
           >
             {/* Breadcrumb */}
             <nav className="flex justify-center mb-6" aria-label="Breadcrumb">
-              <ol className="flex items-center space-x-2 text-sm text-charcoal-light">
+              <ol className="flex items-center space-x-2 text-sm text-charcoal/70">
                 <li>
-                  <a href="/" className="hover:text-rose-gold transition-colors">
+                  <a href="/" className="hover:text-pink transition-colors">
                     Home
                   </a>
                 </li>
@@ -84,7 +84,7 @@ export default function FAQPage() {
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="text-lg md:text-xl text-charcoal-light leading-relaxed">
+            <p className="text-lg md:text-xl text-charcoal/70 leading-relaxed">
               Find answers to common questions about our services, booking process, and more.
             </p>
           </motion.div>
@@ -92,7 +92,7 @@ export default function FAQPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-16 md:py-24 bg-ivory">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Search Bar */}
@@ -127,8 +127,8 @@ export default function FAQPage() {
                   onClick={() => setActiveCategory(category)}
                   className={`px-6 py-3 rounded-full font-heading font-medium text-sm uppercase tracking-wide transition-all duration-300 ${
                     activeCategory === category
-                      ? 'bg-rose-gold text-white shadow-luxury'
-                      : 'bg-white text-charcoal hover:bg-cream-100 border border-cream-200'
+                      ? 'bg-pink text-white shadow-luxury'
+                      : 'bg-white text-charcoal hover:bg-ivory-100 border border-ivory-200'
                   }`}
                 >
                   {category === 'all' ? 'All Questions' : faqCategoryLabels[category]}
@@ -143,9 +143,9 @@ export default function FAQPage() {
                 animate={{ opacity: 1 }}
                 className="text-center py-16"
               >
-                <p className="text-lg text-charcoal-light">
+                <p className="text-lg text-charcoal/70">
                   No questions found matching your search. Try different keywords or{' '}
-                  <a href="/contact" className="text-rose-gold hover:underline">
+                  <a href="/contact" className="text-pink hover:underline">
                     contact us
                   </a>{' '}
                   directly.
@@ -197,7 +197,7 @@ export default function FAQPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="mt-8 text-center text-charcoal-light"
+              className="mt-8 text-center text-charcoal/70"
             >
               <p>
                 Showing <span className="font-semibold text-charcoal">{filteredFAQs.length}</span>{' '}
@@ -221,20 +221,20 @@ export default function FAQPage() {
             <h2 className="font-display text-3xl md:text-4xl text-charcoal mb-6">
               Still Have Questions?
             </h2>
-            <p className="text-lg text-charcoal-light mb-8 leading-relaxed">
+            <p className="text-lg text-charcoal/70 mb-8 leading-relaxed">
               Can't find what you're looking for? Our team is here to help. Contact us directly
               and we'll be happy to assist you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="inline-block px-8 py-4 bg-rose-gold hover:bg-rose-gold-600 text-white font-heading font-semibold text-lg rounded-full transition-all duration-300 shadow-luxury hover:shadow-luxury-hover hover:-translate-y-1"
+                className="inline-block px-8 py-4 bg-pink hover:bg-pink-600 text-white font-heading font-semibold text-lg rounded-full transition-all duration-300 shadow-luxury hover:shadow-luxury-hover hover:-translate-y-1"
               >
                 Contact Us
               </a>
               <a
                 href="tel:(555)012-3456"
-                className="inline-block px-8 py-4 bg-transparent border-2 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white font-heading font-semibold text-lg rounded-full transition-all duration-300"
+                className="inline-block px-8 py-4 bg-transparent border-2 border-pink text-pink hover:bg-pink hover:text-white font-heading font-semibold text-lg rounded-full transition-all duration-300"
               >
                 Call (555) 012-3456
               </a>

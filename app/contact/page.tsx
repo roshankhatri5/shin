@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative bg-gradient-to-br from-rose-gold-50 via-blush-50 to-lavender-50 py-16 md:py-24">
+      <section className="relative bg-gradient-to-br from-pink/10 via-blush/10 to-rose/10 py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={slideUp}
@@ -19,9 +19,9 @@ export default function ContactPage() {
           >
             {/* Breadcrumb */}
             <nav className="flex justify-center mb-6" aria-label="Breadcrumb">
-              <ol className="flex items-center space-x-2 text-sm text-charcoal-light">
+              <ol className="flex items-center space-x-2 text-sm text-charcoal/70">
                 <li>
-                  <a href="/" className="hover:text-rose-gold transition-colors">
+                  <a href="/" className="hover:text-pink transition-colors">
                     Home
                   </a>
                 </li>
@@ -37,7 +37,7 @@ export default function ContactPage() {
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">
               Get in Touch
             </h1>
-            <p className="text-lg md:text-xl text-charcoal-light leading-relaxed">
+            <p className="text-lg md:text-xl text-charcoal/70 leading-relaxed">
               Have a question or ready to book an appointment? We'd love to hear from you.
               Fill out the form below or reach out using our contact information.
             </p>
@@ -46,16 +46,16 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-16 md:py-24 bg-ivory">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto">
             {/* Contact Form */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
+            <div className="bg-white rounded-2xl shadow-soft p-8 md:p-10">
               <div className="mb-8">
                 <h2 className="font-display text-3xl text-charcoal mb-3">
                   Send Us a Message
                 </h2>
-                <p className="text-charcoal-light">
+                <p className="text-charcoal/70">
                   Fill out the form and we'll get back to you as soon as possible.
                 </p>
               </div>
@@ -63,12 +63,12 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Information */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
+            <div className="bg-white rounded-2xl shadow-soft p-8 md:p-10">
               <div className="mb-8">
                 <h2 className="font-display text-3xl text-charcoal mb-3">
                   Contact Information
                 </h2>
-                <p className="text-charcoal-light">
+                <p className="text-charcoal/70">
                   Visit us, call us, or connect with us on social media.
                 </p>
               </div>
@@ -92,7 +92,7 @@ export default function ContactPage() {
               <h2 className="font-display text-3xl md:text-4xl text-charcoal mb-4">
                 Find Us
               </h2>
-              <p className="text-lg text-charcoal-light">
+              <p className="text-lg text-charcoal/70">
                 Located in the heart of downtown, with easy access and parking available.
               </p>
             </div>
@@ -100,20 +100,20 @@ export default function ContactPage() {
             {/* Map Placeholder */}
             <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-luxury">
               {/* In production, replace with actual Google Maps embed */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cream-100 to-cream-200 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-ivory-100 to-ivory-200 flex items-center justify-center">
                 <div className="text-center">
-                  <MapPin className="w-16 h-16 text-rose-gold mx-auto mb-4" />
+                  <MapPin className="w-16 h-16 text-pink mx-auto mb-4" />
                   <p className="text-lg text-charcoal font-medium mb-2">
                     123 Main Street
                   </p>
-                  <p className="text-charcoal-light">
+                  <p className="text-charcoal/70">
                     Downtown, CA 90210
                   </p>
                   <a
                     href="https://maps.google.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-6 px-6 py-3 bg-rose-gold hover:bg-rose-gold-600 text-white font-heading font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="inline-block mt-6 px-6 py-3 bg-pink hover:bg-pink-600 text-white font-heading font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Get Directions
                   </a>
@@ -137,7 +137,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-rose-gold to-rose-gold-600">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-pink to-pink-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -154,7 +154,7 @@ export default function ContactPage() {
             </p>
             <a
               href="/booking"
-              className="inline-block px-8 py-4 bg-white text-rose-gold font-heading font-semibold text-lg rounded-full transition-all duration-300 shadow-luxury hover:shadow-luxury-hover hover:-translate-y-1"
+              className="inline-block px-8 py-4 bg-white text-pink font-heading font-semibold text-lg rounded-full transition-all duration-300 shadow-luxury hover:shadow-luxury-hover hover:-translate-y-1"
             >
               Book Appointment
             </a>

@@ -27,7 +27,7 @@ export const Tabs: React.FC<TabsProps> = ({
     onChange?.(value)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent, index: number) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
     const availableTabs = tabs.filter((tab) => !tab.disabled)
     const currentIndex = availableTabs.findIndex((tab) => tab.value === activeValue)
 
@@ -56,7 +56,6 @@ export const Tabs: React.FC<TabsProps> = ({
     }
   }
 
-  const activeTab = tabs.find((tab) => tab.value === activeValue)
 
   return (
     <div
@@ -73,11 +72,11 @@ export const Tabs: React.FC<TabsProps> = ({
         className={cn(
           'relative',
           orientation === 'horizontal'
-            ? 'flex border-b-2 border-cream-200'
-            : 'flex flex-col space-y-1 min-w-[200px]'
+            ? 'flex border-b-2 border-pink-200/60 bg-gradient-to-r from-white to-pink-50/30 rounded-t-2xl p-1'
+            : 'flex flex-col space-y-1 min-w-[200px] bg-gradient-to-b from-white to-pink-50/30 rounded-2xl p-2'
         )}
       >
-        {tabs.map((tab, index) => {
+        {tabs.map((tab, _index) => {
           const isActive = tab.value === activeValue
           const isDisabled = tab.disabled
 
@@ -91,17 +90,18 @@ export const Tabs: React.FC<TabsProps> = ({
               id={`tab-${tab.value}`}
               disabled={isDisabled}
               onClick={() => !isDisabled && handleTabChange(tab.value)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
+              onKeyDown={(e) => handleKeyDown(e)}
               className={cn(
-                'relative px-4 py-2 font-heading font-medium transition-colors duration-200',
-                'focus:outline-none focus:ring-2 focus:ring-rose-gold-300 focus:ring-offset-2 rounded',
+                'relative px-4 py-3 font-heading font-medium transition-all duration-300 rounded-xl',
+                'focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2',
                 'disabled:opacity-50 disabled:cursor-not-allowed',
+                'hover:scale-105 hover:shadow-soft',
                 orientation === 'horizontal'
                   ? 'whitespace-nowrap'
                   : 'text-left w-full',
                 isActive
-                  ? 'text-rose-gold'
-                  : 'text-charcoal-light hover:text-charcoal'
+                  ? 'text-pink-600 bg-white shadow-elegant border border-pink-200/50'
+                  : 'text-warmgray-600 hover:text-pink-500 hover:bg-pink-50/50'
               )}
             >
               {tab.label}
@@ -110,7 +110,7 @@ export const Tabs: React.FC<TabsProps> = ({
               {orientation === 'horizontal' && isActive && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-rose-gold"
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-400 to-blush-400 rounded-full"
                   transition={tabsIndicator}
                 />
               )}

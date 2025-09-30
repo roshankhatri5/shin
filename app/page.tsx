@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { MainLayout } from '@/components/layouts/main-layout'
 import { HeroSection } from '@/components/features/hero/hero-section'
 import { FeaturesSection } from '@/components/features/home/features-section'
 import { ServicesPreview } from '@/components/features/home/services-preview'
@@ -13,12 +12,12 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <MainLayout>
+    <>
       <HeroSection />
       <FeaturesSection />
       <ServicesPreview />
       <CTASection />
       <TestimonialsPreview />
-    </MainLayout>
+    </>
   )
 }

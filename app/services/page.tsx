@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { MainLayout } from '@/components/layouts/main-layout'
 import { ServicesPageHeader } from '@/components/features/services/services-page-header'
 import { ServicesGrid } from '@/components/features/services/services-grid'
 import { PricingPackages } from '@/components/features/services/pricing-packages'
@@ -11,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <MainLayout>
+    <>
       <ServicesPageHeader />
       <ServicesGrid />
       <PricingPackages />
-    </MainLayout>
+    </>
   )
 }

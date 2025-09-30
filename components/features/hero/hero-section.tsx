@@ -6,6 +6,7 @@ import { ChevronDown, Sparkles, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { staggerContainer, staggerItem, luxuryTransition } from '@/lib/animations'
 import { useRef } from 'react'
+import { ClientOnly } from '@/components/ui/client-only'
 
 export function HeroSection() {
   const scrollToContent = () => {
@@ -25,17 +26,38 @@ export function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Modern Gradient Background with sophisticated design */}
-      <div className="absolute inset-0 bg-gradient-to-br from-warmgray-50 via-gold-50 to-warmgray-100" />
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-gold-100/20 to-warmgray-200/30" />
+    <ClientOnly fallback={
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-sweet-dreams">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/95 backdrop-blur-xl text-charcoal font-heading text-sm font-semibold shadow-luxury border border-pink-300/50 ring-1 ring-pink-200/30 mb-8">
+              <Sparkles className="w-5 h-5 mr-3 text-pink-600" />
+              Premier Nail Artistry & Luxury Spa Experience
+            </div>
+            <h1 className="font-display text-display-lg md:text-display-xl lg:text-display-2xl text-charcoal mb-8 leading-tight">
+              Experience Luxury
+              <br />
+              <span className="text-gradient bg-gradient-to-r from-pink-500 via-pink-600 to-blush-600 bg-clip-text text-transparent">
+                Nail Artistry
+              </span>
+            </h1>
+          </div>
+        </div>
+      </section>
+    }>
+      <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden" suppressHydrationWarning>
+      {/* Enhanced Feminine Gradient Background */}
+      <div className="absolute inset-0 bg-sweet-dreams" />
+      <div className="absolute inset-0 bg-gradient-radial from-white/90 via-pink-50/40 to-blush-50/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-rose-50/30 via-transparent to-white/60" />
 
-      {/* Sophisticated Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      {/* Enhanced Background Pattern with better visibility */}
+      <div className="absolute inset-0 opacity-[0.08]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, #d4a574 0%, transparent 50%),
-                           radial-gradient(circle at 75% 75%, #e6945a 0%, transparent 50%),
-                           radial-gradient(circle at 50% 50%, #c18787 0%, transparent 50%)`
+          backgroundImage: `radial-gradient(circle at 20% 30%, #e91e63 0%, transparent 60%),
+                           radial-gradient(circle at 80% 20%, #f472b6 0%, transparent 60%),
+                           radial-gradient(circle at 60% 80%, #f43f5e 0%, transparent 60%),
+                           radial-gradient(circle at 30% 70%, #ffdf44 0%, transparent 60%)`
         }} />
       </div>
 
@@ -46,17 +68,25 @@ export function HeroSection() {
           style={{
             y: y1,
             opacity,
-            background: 'linear-gradient(135deg, #d4a574 0%, #e6945a 50%, #c18787 100%)'
+            background: 'linear-gradient(135deg, #e91e63 0%, #f472b6 50%, #f43f5e 100%)'
           }}
-          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 rounded-full opacity-15 blur-3xl"
+          className="absolute -top-1/4 -right-1/4 w-2/3 h-2/3 rounded-full opacity-15 blur-3xl"
         />
         <motion.div
           style={{
             y: y2,
             opacity,
-            background: 'linear-gradient(135deg, #c18787 0%, #f2d574 50%, #d4a574 100%)'
+            background: 'linear-gradient(135deg, #f43f5e 0%, #ffdf44 50%, #f472b6 100%)'
           }}
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full opacity-15 blur-3xl"
+          className="absolute -bottom-1/4 -left-1/4 w-2/3 h-2/3 rounded-full opacity-15 blur-3xl"
+        />
+        <motion.div
+          style={{
+            y: y3,
+            opacity,
+            background: 'linear-gradient(135deg, #ffdf44 0%, #e91e63 50%, #f472b6 100%)'
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 rounded-full opacity-12 blur-2xl"
         />
 
         {/* Medium floating elements */}
@@ -64,7 +94,7 @@ export function HeroSection() {
           style={{
             y: y3,
             opacity,
-            background: 'radial-gradient(circle, #d4a574 0%, transparent 70%)'
+            background: 'radial-gradient(circle, #f472b6 0%, transparent 70%)'
           }}
           animate={{
             rotate: [0, 360],
@@ -75,7 +105,7 @@ export function HeroSection() {
             repeat: Infinity,
             ease: 'linear',
           }}
-          className="absolute top-1/4 right-1/3 w-32 h-32 rounded-full opacity-8 blur-2xl"
+          className="absolute top-1/4 right-1/3 w-32 h-32 rounded-full opacity-5 blur-2xl"
         />
 
         {/* Small decorative particles */}
@@ -131,21 +161,21 @@ export function HeroSection() {
             whileHover={{ scale: 1.05, y: -2 }}
             transition={luxuryTransition}
           >
-            <div className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-white/95 to-gold-50/90 backdrop-blur-xl text-charcoal font-heading text-sm font-semibold shadow-luxury border border-gold-200/50 hover:shadow-glow transition-all duration-300">
-              <Sparkles className="w-5 h-5 mr-3 text-gold animate-pulse-glow" />
-              Premier Nail Artistry & Elegant Spa Experience
+            <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/95 backdrop-blur-xl text-charcoal font-heading text-sm font-semibold shadow-luxury border border-pink-200/50 ring-1 ring-pink-100/30">
+              <Sparkles className="w-5 h-5 mr-3 text-pink animate-pulse-glow" />
+              ✨ Dreamy Nail Art & Feminine Spa Bliss ✨
             </div>
           </motion.div>
 
           {/* Enhanced Modern Headline */}
           <motion.h1
             variants={staggerItem}
-            className="font-display text-display-lg md:text-display-xl lg:text-display-2xl text-charcoal mb-8 leading-tight"
+            className="font-display text-display-lg md:text-display-xl lg:text-display-2xl text-charcoal mb-8 leading-tight relative"
           >
-            Experience Sophisticated
+            <span className="relative z-10 font-script text-pink-600">Embrace Your</span>
             <br />
             <motion.span
-              className="text-gradient bg-gradient-to-r from-gold via-gold-400 to-gold-600 bg-clip-text text-transparent"
+              className="relative z-10 text-gradient bg-gradient-to-r from-pink-500 via-blush-400 to-rose-400 bg-clip-text text-transparent"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}
@@ -158,15 +188,16 @@ export function HeroSection() {
                 backgroundSize: '200% 200%',
               }}
             >
-              Nail Artistry
+              ✨ Feminine Beauty ✨
             </motion.span>
             <motion.div 
-              className="absolute -inset-1 bg-gradient-to-r from-gold/20 to-gold-400/20 rounded-lg blur-lg"
+              className="absolute -inset-2 bg-gradient-to-r from-gold/15 via-gold-400/20 to-gold-600/15 rounded-2xl blur-xl -z-10"
               animate={{
-                opacity: [0.5, 0.8, 0.5],
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.02, 1],
               }}
               transition={{
-                duration: 3,
+                duration: 4,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
@@ -176,11 +207,11 @@ export function HeroSection() {
           {/* Enhanced Modern Subheadline */}
           <motion.p
             variants={staggerItem}
-            className="text-body-lg md:text-body-xl text-warmgray-600 max-w-3xl mx-auto mb-12 leading-relaxed font-light"
+            className="text-body-lg md:text-body-xl text-warmgray-700 max-w-3xl mx-auto mb-12 leading-relaxed font-light"
           >
-            Indulge in premium nail care and spa services in our elegantly designed salon.
+            Step into our dreamy sanctuary where every detail sparkles with femininity and grace.
             <br className="hidden md:block" />
-            <span className="text-gold-600 font-medium bg-gradient-to-r from-gold-500 to-gold-700 bg-clip-text text-transparent">Where expert craftsmanship meets relaxation and feminine elegance.</span>
+            <span className="text-pink-600 font-medium bg-gradient-to-r from-pink-500 to-blush-500 bg-clip-text text-transparent font-script text-xl">✨ Where girly dreams come true through exquisite nail artistry ✨</span>
           </motion.p>
 
           {/* Enhanced CTAs with better animations */}
@@ -195,11 +226,11 @@ export function HeroSection() {
             >
               <Link href="/booking">
                 <Button
-                  variant="elegant"
+                  variant="girly"
                   size="xl"
-                  className="shadow-luxury hover:shadow-glow px-12 py-6 text-lg font-semibold rounded-2xl bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-white border-0 transform hover:scale-105 transition-all duration-300"
+                  className="shadow-luxury hover:shadow-luxury-hover px-12 py-6 text-lg font-semibold rounded-2xl text-white border-0 transform hover:scale-105 transition-all duration-300 ring-2 ring-pink-300/30 hover:ring-pink-400/40"
                 >
-                  ✨ Book Appointment
+                  💖 Book My Dream Appointment 💖
                 </Button>
               </Link>
             </motion.div>
@@ -211,10 +242,10 @@ export function HeroSection() {
               <Link href="/services">
                 <Button
                   size="xl"
-                  variant="outline"
-                  className="border-2 border-gold-400 text-gold-700 hover:bg-gold-400 hover:text-white px-12 py-6 text-lg font-semibold backdrop-blur-sm bg-white/90 rounded-2xl hover:shadow-luxury transform hover:scale-105 transition-all duration-300"
+                  variant="dreamy"
+                  className="border-2 border-pink-300 px-12 py-6 text-lg font-semibold backdrop-blur-sm rounded-2xl hover:shadow-luxury transform hover:scale-105 transition-all duration-300 ring-1 ring-pink-200/30 hover:ring-pink-300/50"
                 >
-                  View Services
+                  🌸 Explore Our Magic 🌸
                 </Button>
               </Link>
             </motion.div>
@@ -230,12 +261,12 @@ export function HeroSection() {
               whileHover={{ scale: 1.08, y: -3 }}
               transition={luxuryTransition}
             >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shadow-luxury animate-pulse-glow">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-blush-500 flex items-center justify-center shadow-luxury ring-2 ring-pink-300/30">
                 <span className="text-white font-bold text-xl">15+</span>
               </div>
               <div className="text-left">
-                <span className="text-2xl font-bold text-gold-600 block">15+</span>
-                <span className="text-sm font-medium text-warmgray-600">Years Experience</span>
+                <span className="text-2xl font-bold text-pink-600 block">15+</span>
+                <span className="text-sm font-medium text-warmgray-700">Years of Girly Glam</span>
               </div>
             </motion.div>
 
@@ -246,12 +277,12 @@ export function HeroSection() {
               whileHover={{ scale: 1.08, y: -3 }}
               transition={luxuryTransition}
             >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center shadow-luxury animate-bounce-soft">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blush-400 to-pink-500 flex items-center justify-center shadow-luxury ring-2 ring-blush-300/30">
                 <span className="text-white font-bold text-xl">5K+</span>
               </div>
               <div className="text-left">
-                <span className="text-2xl font-bold text-gold-700 block">5000+</span>
-                <span className="text-sm font-medium text-warmgray-600">Happy Clients</span>
+                <span className="text-2xl font-bold text-blush-600 block">5000+</span>
+                <span className="text-sm font-medium text-warmgray-700">Beautiful Queens</span>
               </div>
             </motion.div>
 
@@ -262,12 +293,12 @@ export function HeroSection() {
               whileHover={{ scale: 1.08, y: -3 }}
               transition={luxuryTransition}
             >
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blush to-pink flex items-center justify-center shadow-elegant">
-                <span className="text-white font-bold text-lg">⭐</span>
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-rose-400 to-pink-500 flex items-center justify-center shadow-luxury ring-2 ring-rose-300/30">
+                <span className="text-white font-bold text-lg">💕</span>
               </div>
               <div className="text-left">
-                <span className="text-2xl font-bold text-blush block">5.0</span>
-                <span className="text-sm font-medium">Client Rating</span>
+                <span className="text-2xl font-bold text-rose-600 block">5.0</span>
+                <span className="text-sm font-medium text-warmgray-700">Love Rating</span>
               </div>
             </motion.div>
           </motion.div>
@@ -284,7 +315,7 @@ export function HeroSection() {
           duration: 0.8,
           ease: [0.4, 0, 0.2, 1],
         }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-warmgray hover:text-pink transition-all duration-300 group"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-warmgray-600 hover:text-gold-600 transition-all duration-300 group"
         aria-label="Scroll to content"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -340,5 +371,6 @@ export function HeroSection() {
         />
       </motion.button>
     </section>
+    </ClientOnly>
   )
 }

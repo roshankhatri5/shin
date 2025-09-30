@@ -168,7 +168,7 @@ export function Footer() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-white/60 text-body-sm text-center md:text-left">
-              © {currentYear} Luxury Nail Salon. All rights reserved.
+              © <span suppressHydrationWarning>{currentYear}</span> Luxury Nail Salon. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
               <Link

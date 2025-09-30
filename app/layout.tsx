@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Cormorant_Garamond, Montserrat } from 'next/font/google'
+import { Inter, Cormorant_Garamond, Montserrat, Dancing_Script, Playfair_Display, Poppins } from 'next/font/google'
 import './globals.css'
 import { ToastProvider } from '@/components/ui/toast'
 import { MainLayout } from '@/components/layouts/main-layout'
@@ -21,6 +21,25 @@ const cormorant = Cormorant_Garamond({
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
+  display: 'swap',
+})
+
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  variable: '--font-dancing-script',
+  display: 'swap',
+})
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair-display',
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins',
   display: 'swap',
 })
 
@@ -77,8 +96,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${cormorant.variable} ${montserrat.variable}`}>
-      <body className="antialiased">
+    <html lang="en" className={`${inter.variable} ${cormorant.variable} ${montserrat.variable} ${dancingScript.variable} ${playfairDisplay.variable} ${poppins.variable}`} suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
         <ToastProvider>
           <MainLayout>
             {children}

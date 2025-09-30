@@ -56,12 +56,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               'w-full font-body rounded-xl border transition-all duration-300',
               'focus:outline-none focus:ring-2 focus:ring-offset-0',
-              'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-ivory-100',
-              'placeholder:text-warmgray-400 bg-white',
-              'hover:border-pink-200 hover:shadow-soft',
+              'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-pink-50/20',
+              'placeholder:text-warmgray-400 bg-white/95 backdrop-blur-sm',
+              'hover:border-pink-300 hover:shadow-soft hover:bg-white hover:scale-[1.01]',
               error
                 ? 'border-red-400 focus:border-red-500 focus:ring-red-200 shadow-red-100'
-                : 'border-ivory-200 focus:border-pink focus:ring-pink-200 focus:shadow-elegant',
+                : 'border-pink-200/60 focus:border-pink-400 focus:ring-pink-200/50 focus:shadow-elegant focus:scale-[1.01]',
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
               inputSizes[size],

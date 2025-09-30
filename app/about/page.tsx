@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { MainLayout } from '@/components/layouts/main-layout'
 import { AboutPageHeader } from '@/components/features/about/about-page-header'
 import { AboutStory } from '@/components/features/about/about-story'
 import { TeamSection } from '@/components/features/about/team-section'
@@ -12,11 +11,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <MainLayout>
+    <>
       <AboutPageHeader />
       <AboutStory />
       <TeamSection />
       <ValuesSection />
-    </MainLayout>
+    </>
   )
 }

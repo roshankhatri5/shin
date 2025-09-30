@@ -11,9 +11,8 @@ import { CustomerInfo, CustomerInfoData } from './customer-info'
 import { BookingSummary } from './booking-summary'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/toast'
-import { TeamMember } from '@/lib/constants/team'
 import { cn } from '@/lib/utils'
-import { slideRight, slideLeft } from '@/lib/animations'
+import { slideRight } from '@/lib/animations'
 
 const TOTAL_STEPS = 5
 
@@ -27,7 +26,6 @@ export function BookingWizard() {
     previousStep,
     addService,
     removeService,
-    setServices,
     setDateTime,
     setTechnician,
     setCustomerInfo,
@@ -79,7 +77,7 @@ export function BookingWizard() {
       })
 
       resetBooking()
-    } catch (error) {
+    } catch {
       showToast({
         title: 'Error',
         description: 'Failed to create booking. Please try again.',
@@ -115,9 +113,9 @@ export function BookingWizard() {
             {Math.round((state.currentStep / TOTAL_STEPS) * 100)}% Complete
           </span>
         </div>
-        <div className="h-2 bg-cream-200 rounded-full overflow-hidden">
+        <div className="h-2 bg-ivory-200 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-rose-gold to-blush"
+            className="h-full bg-gradient-to-r from-pink to-blush"
             initial={{ width: 0 }}
             animate={{ width: `${(state.currentStep / TOTAL_STEPS) * 100}%` }}
             transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
@@ -132,10 +130,10 @@ export function BookingWizard() {
               className={cn(
                 'text-center text-xs font-medium transition-colors duration-300',
                 state.currentStep === index + 1
-                  ? 'text-rose-gold'
+                  ? 'text-pink'
                   : state.currentStep > index + 1
-                    ? 'text-mint'
-                    : 'text-charcoal-light'
+                    ? 'text-emerald-500'  // Using emerald as a substitute for mint
+                    : 'text-charcoal/70'
               )}
             >
               {label}

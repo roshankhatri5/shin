@@ -1,3 +1,27 @@
+/**
+ * Enhanced Input Component
+ * 
+ * A sophisticated input field with floating labels, validation states, and animations.
+ * Supports multiple variants, error handling, and accessibility features.
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <EnhancedInput 
+ *   label="Email Address" 
+ *   type="email"
+ *   placeholder="you@example.com"
+ * />
+ * 
+ * // With validation
+ * <EnhancedInput
+ *   label="Password"
+ *   type="password"
+ *   error="Password must be at least 8 characters"
+ *   variant="luxury"
+ * />
+ * ```
+ */
 'use client'
 
 import React, { forwardRef, useState } from 'react'
@@ -29,6 +53,18 @@ const inputSizes = {
   lg: 'px-5 py-4 text-lg',
 }
 
+/**
+ * Enhanced input field with advanced features
+ * 
+ * @param label - Input label text
+ * @param error - Error message to display
+ * @param success - Whether input is in success state
+ * @param helperText - Helper text to display below input
+ * @param leftIcon - Icon to display on the left side
+ * @param rightIcon - Icon to display on the right side
+ * @param variant - Visual style variant
+ * @param inputSize - Size variant
+ */
 export const EnhancedInput = forwardRef<HTMLInputElement, EnhancedInputProps>(
   ({ 
     className,
@@ -78,7 +114,7 @@ export const EnhancedInput = forwardRef<HTMLInputElement, EnhancedInputProps>(
             </div>
           )}
           
-          <motion.input
+          <input
             ref={ref}
             type={inputType}
             disabled={disabled}
@@ -104,9 +140,9 @@ export const EnhancedInput = forwardRef<HTMLInputElement, EnhancedInputProps>(
             {(rightIcon || isPassword || error || success) && (
               <motion.div 
                 className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-1"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               >
                 {error && (
                   <AlertCircle className="w-5 h-5 text-red-500" />

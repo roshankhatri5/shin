@@ -8,32 +8,32 @@ const features = [
   {
     id: '1',
     icon: Award,
-    title: 'Expert Technicians',
-    description: 'Our highly trained professionals bring years of experience and passion to every service.',
+    title: 'Expert Nail Artists',
+    description: 'Our certified technicians bring years of experience and artistic passion to every luxury service.',
   },
   {
     id: '2',
     icon: Sparkles,
     title: 'Premium Products',
-    description: 'We use only the finest professional-grade products that are safe, effective, and long-lasting.',
+    description: 'We exclusively use high-quality, professional-grade products that ensure safety and lasting beauty.',
   },
   {
     id: '3',
     icon: ShieldCheck,
-    title: 'Relaxing Atmosphere',
-    description: 'Escape to our beautifully designed sanctuary where comfort and tranquility await.',
+    title: 'Luxury Environment',
+    description: 'Step into our elegant sanctuary where every detail is designed for ultimate relaxation and comfort.',
   },
   {
     id: '4',
     icon: Heart,
     title: 'Custom Designs',
-    description: 'From classic elegance to trendy art, we bring your nail vision to life with precision.',
+    description: 'From classic elegance to bold statements, we create personalized nail art that reflects your unique style.',
   },
 ]
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-20 lg:py-28 bg-white">
+    <section id="features" className="py-20 lg:py-28 bg-gradient-elegant">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -44,11 +44,11 @@ export function FeaturesSection() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="font-display text-h1 md:text-display-lg text-charcoal mb-4">
-            Why Choose <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">Elegant Nails</span>
+            Why Choose <span className="bg-gradient-to-r from-pink-400 to-blush-500 bg-clip-text text-transparent font-script">Luxury Nail Studio</span>
           </h2>
           <p className="text-body-lg text-warmgray-600 leading-relaxed">
-            We're committed to providing an exceptional experience that combines artistry, 
-            hygiene, and relaxation in every visit with <span className="text-gold-600 font-medium">unmatched attention to detail.</span>
+            We're devoted to creating exceptional experiences that celebrate your beauty and style. 
+            Every visit is crafted with <span className="text-pink-600 font-medium">professional care, attention to detail, and luxury service</span>
           </p>
         </motion.div>
 
@@ -69,17 +69,17 @@ export function FeaturesSection() {
             >
               <motion.div
                 variants={hoverLift}
-                className="bg-gradient-to-br from-white to-warmgray-50/50 rounded-3xl p-8 h-full border border-gold-200/30 hover:border-gold-300/50 transition-all duration-500 shadow-soft hover:shadow-luxury backdrop-blur-sm"
+                className="bg-gradient-to-br from-white to-pink-50/50 rounded-3xl p-8 h-full border border-pink-200/30 hover:border-pink-300/50 transition-all duration-500 shadow-soft hover:shadow-luxury backdrop-blur-sm"
               >
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-18 h-18 rounded-2xl bg-gradient-to-br from-gold-100 to-gold-200 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-soft">
-                    <feature.icon className="w-9 h-9 text-gold-600 group-hover:text-gold-700" aria-hidden="true" />
+                  <div className="w-18 h-18 rounded-2xl bg-gradient-to-br from-pink-100 to-blush-200 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-soft">
+                    <feature.icon className="w-9 h-9 text-pink-600 group-hover:text-pink-700" aria-hidden="true" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="font-heading text-h4 text-charcoal mb-4 group-hover:text-gold-600 transition-colors duration-300">
+                <h3 className="font-heading text-h4 text-charcoal mb-4 group-hover:text-pink-600 transition-colors duration-300">
                   {feature.title}
                 </h3>
                 <p className="text-body text-warmgray-600 leading-relaxed">

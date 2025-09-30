@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { toastSlideIn } from '@/lib/animations'
-import { ToastProps, ToastVariant } from '@/types/components'
+import { ToastProps } from '@/types/components'
 
 // Toast Context
 interface ToastContextType {
@@ -26,6 +26,10 @@ export const useToast = () => {
 export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastProps[]>([])
 
+  const hideToast = useCallback((id: string) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }, [])
+
   const showToast = useCallback((toast: Omit<ToastProps, 'id' | 'onClose'>) => {
     const id = Math.random().toString(36).substring(2, 9)
     const newToast: ToastProps = {
@@ -43,11 +47,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         hideToast(id)
       }, newToast.duration)
     }
-  }, [])
-
-  const hideToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id))
-  }, [])
+  }, [hideToast])
 
   return (
     <ToastContext.Provider value={{ showToast, hideToast }}>
@@ -76,10 +76,10 @@ const ToastContainer: React.FC<{ toasts: ToastProps[] }> = ({ toasts }) => {
 
 // Toast variants
 const toastVariants = {
-  success: 'bg-mint-50 border-mint-200 text-mint-800',
+  success: 'bg-emerald-50 border-emerald-200 text-emerald-800',
   error: 'bg-red-50 border-red-200 text-red-800',
   warning: 'bg-yellow-50 border-yellow-200 text-yellow-800',
-  info: 'bg-lavender-50 border-lavender-200 text-lavender-800',
+  info: 'bg-blue-50 border-blue-200 text-blue-800',
 }
 
 const toastIcons = {
@@ -116,7 +116,7 @@ const toastIcons = {
 }
 
 // Toast Component
-const Toast: React.FC<ToastProps> = ({ id, variant = 'info', title, description, onClose }) => {
+const Toast: React.FC<ToastProps> = ({ variant = 'info', title, description, onClose }) => {
   return (
     <motion.div
       variants={toastSlideIn}
@@ -143,7 +143,7 @@ const Toast: React.FC<ToastProps> = ({ id, variant = 'info', title, description,
         className={cn(
           'flex-shrink-0 p-1 rounded hover:bg-black/5',
           'transition-colors duration-200',
-          'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-gold-300'
+          'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink/30'
         )}
         aria-label="Close notification"
       >

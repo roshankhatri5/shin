@@ -1,3 +1,27 @@
+/**
+ * Enhanced Button Component
+ * 
+ * A sophisticated button component with multiple variants, animations, and accessibility features.
+ * Supports loading states, icons, and full customization while maintaining design consistency.
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <Button variant="primary" onClick={handleClick}>
+ *   Book Appointment
+ * </Button>
+ * 
+ * // With icons and loading
+ * <Button 
+ *   variant="elegant" 
+ *   leftIcon={<StarIcon />}
+ *   loading={isSubmitting}
+ *   fullWidth
+ * >
+ *   Submit Form
+ * </Button>
+ * ```
+ */
 'use client'
 
 import React, { forwardRef } from 'react'
@@ -5,6 +29,10 @@ import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { ButtonProps } from '@/types/components'
 
+/**
+ * Button variant styles mapping
+ * Each variant provides a different visual style while maintaining consistency
+ */
 const buttonVariants = {
   primary: 'bg-gradient-to-r from-pink to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 hover:shadow-luxury hover:-translate-y-0.5 shadow-soft',
   secondary: 'bg-gradient-to-r from-blush to-blush-600 text-white hover:from-blush-600 hover:to-blush-700 hover:shadow-luxury hover:-translate-y-0.5 shadow-soft',
@@ -16,6 +44,9 @@ const buttonVariants = {
   gradient: 'bg-gradient-luxury text-white hover:shadow-luxury hover:-translate-y-0.5 shadow-soft',
   elegant: 'bg-gradient-to-r from-rose to-blush text-white hover:from-rose-600 hover:to-blush-600 hover:shadow-elegant hover:-translate-y-0.5 shadow-soft',
   rose: 'bg-gradient-to-r from-rose-300 to-rose-400 text-white hover:from-rose-400 hover:to-rose-500 hover:shadow-elegant hover:-translate-y-0.5',
+  girly: 'bg-girly-gradient text-white hover:shadow-luxury hover:-translate-y-0.5 shadow-soft hover:scale-105',
+  feminine: 'bg-feminine-glow text-white hover:shadow-luxury hover:-translate-y-0.5 shadow-soft hover:scale-105',
+  dreamy: 'bg-blush-dream text-pink-700 hover:bg-gradient-luxury hover:text-white hover:shadow-luxury hover:-translate-y-0.5 shadow-soft',
 }
 
 const buttonSizes = {
@@ -26,6 +57,20 @@ const buttonSizes = {
   xs: 'px-3 py-1.5 text-body-xs',
 }
 
+/**
+ * Button component with advanced features and animations
+ * 
+ * @param variant - Visual style variant (primary, secondary, outline, etc.)
+ * @param size - Size variant (xs, sm, md, lg, xl)
+ * @param disabled - Whether the button is disabled
+ * @param loading - Whether to show loading state
+ * @param fullWidth - Whether button should take full width
+ * @param leftIcon - Icon to display on the left side
+ * @param rightIcon - Icon to display on the right side
+ * @param children - Button content
+ * @param className - Additional CSS classes
+ * @param onClick - Click event handler
+ */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {

@@ -54,11 +54,17 @@ export function generateTimeSlots(startTime: string, endTime: string): string[] 
 export const defaultTimeSlots = generateTimeSlots('09:00', '18:00')
 
 // Mock function to check availability (in real app, this would check database)
-export function getAvailableSlots(date: Date, duration: number): TimeSlot[] {
-  // For demo purposes, randomly mark some slots as unavailable
+export function getAvailableSlots(date: Date, _duration: number): TimeSlot[] {
+  // Deterministic availability to avoid SSR/CSR hydration mismatches
+  const dateKey = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+  const hash = (s: string) => {
+    let h = 0
+    for (let i = 0; i < s.length; i++) h = (h << 5) - h + s.charCodeAt(i)
+    return Math.abs(h)
+  }
   return defaultTimeSlots.map(time => ({
     time,
-    available: Math.random() > 0.3, // 70% availability
+    available: (hash(`${dateKey}-${time}`) % 10) > 2, // ~70% available deterministically
   }))
 }
 

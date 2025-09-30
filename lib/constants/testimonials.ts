@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
     date: '2024-03-15',
     verified: true,
     featured: true,
-    image: '/images/testimonials/jennifer-m.jpg',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
   },
   {
     id: '2',

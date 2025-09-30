@@ -10,7 +10,6 @@ import { services } from '@/lib/constants/services'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Select } from '@/components/ui/select'
 import { FormField } from '@/components/ui/form-field'
 import { useToast } from '@/components/ui/toast'
 import { slideUp } from '@/lib/animations'
@@ -31,7 +30,7 @@ export function ContactForm() {
     },
   })
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (_data: ContactFormData) => {
     setIsSubmitting(true)
 
     try {
@@ -52,7 +51,7 @@ export function ContactForm() {
       })
 
       reset()
-    } catch (error) {
+    } catch {
       showToast({
         title: 'Error',
         description: 'Failed to send message. Please try again.',
@@ -125,7 +124,7 @@ export function ContactForm() {
         <select
           id="service"
           {...register('service')}
-          className="w-full px-4 py-3 font-body rounded-lg border border-cream-200 focus:border-rose-gold focus:ring-2 focus:ring-rose-gold-200 focus:outline-none transition-all duration-200"
+          className="w-full px-4 py-3 font-body rounded-lg border border-ivory-200 focus:border-pink focus:ring-2 focus:ring-pink/30 focus:outline-none transition-all duration-200"
         >
           <option value="">Select a service (optional)</option>
           {services.map((service) => (
@@ -148,7 +147,7 @@ export function ContactForm() {
               type="radio"
               value="email"
               {...register('preferredContact')}
-              className="w-4 h-4 text-rose-gold focus:ring-rose-gold"
+              className="w-4 h-4 text-pink focus:ring-pink"
             />
             <span className="text-charcoal">Email</span>
           </label>
@@ -157,7 +156,7 @@ export function ContactForm() {
               type="radio"
               value="phone"
               {...register('preferredContact')}
-              className="w-4 h-4 text-rose-gold focus:ring-rose-gold"
+              className="w-4 h-4 text-pink focus:ring-pink"
             />
             <span className="text-charcoal">Phone</span>
           </label>

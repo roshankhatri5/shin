@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { Heart, Sparkles, Users } from 'lucide-react'
-import { fadeIn, slideUp } from '@/lib/animations'
 
 export function AboutStory() {
   return (

@@ -17,7 +17,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "Hello! I'm an AI assistant powered by GLM-4.5-Air. How can I help you today?",
+      content: "Hello! ✨ I'm Bella, your AI stylist at Elegant Nails. I'm here to help you discover the perfect nail look, answer questions about our services, and assist with booking. What would you like to know? 💅",
       role: 'assistant',
       timestamp: new Date()
     }
@@ -25,6 +25,7 @@ export default function ChatPage() {
   const [inputText, setInputText] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isHydrated, setIsHydrated] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
@@ -40,6 +41,8 @@ export default function ChatPage() {
     if (inputRef.current) {
       inputRef.current.focus()
     }
+    // Mark component hydrated to avoid SSR/CSR timestamp mismatch
+    setIsHydrated(true)
   }, [])
 
   const sendMessage = async () => {
@@ -76,13 +79,35 @@ export default function ChatPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          systemPrompt: `You are Bella, the sophisticated AI stylist for Elegant Nails salon. 
+
+PERSONA: Warm, feminine, elegant, and detail-oriented with expert knowledge of nail care and beauty trends.
+
+STYLE: Speak with grace and encouragement, use refined but approachable language, be concise yet comprehensive.
+
+CAPABILITIES:
+• Explain all nail services and accurate pricing
+• Recommend designs based on season, events, skin tone, and personal style
+• Suggest nail care routines and aftercare tips
+• Help with color matching and trend advice
+• Gently guide toward booking when appropriate
+• Answer questions about salon policies, hours, and procedures
+
+GUIDELINES:
+• Use tasteful emojis (✨💅🌸🎨) to enhance warmth
+• Structure responses for easy reading
+• Avoid slang, keep language elegant
+• Be encouraging and confidence-building
+• Always prioritize nail health and safety
+
+You represent a luxury nail salon experience - be knowledgeable, caring, and professional.`,
           messages: apiMessages
         }),
       })
 
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.error || 'Failed to get response')
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error occurred' }))
+        throw new Error(errorData.error || `Request failed with status ${response.status}`)
       }
 
       const data = await response.json()
@@ -114,7 +139,7 @@ export default function ChatPage() {
     setMessages([
       {
         id: '1',
-        content: "Hello! I'm an AI assistant powered by GLM-4.5-Air. How can I help you today?",
+        content: "Hello! ✨ I'm Bella, your AI stylist at Elegant Nails. I'm here to help you discover the perfect nail look, answer questions about our services, and assist with booking. What would you like to know? 💅",
         role: 'assistant',
         timestamp: new Date()
       }
@@ -123,7 +148,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-ivory to-warmgray-50">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <motion.div
@@ -132,19 +157,19 @@ export default function ChatPage() {
           className="text-center mb-8"
         >
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-gold-400 to-gold-600 rounded-2xl flex items-center justify-center shadow-lg">
               <MessageSquare className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              GLM-4.5-Air Chat
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-gold-500 to-gold-700 bg-clip-text text-transparent">
+              Bella — Your Nail Artist
             </h1>
           </div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Experience advanced AI conversation powered by GLM-4.5-Air. Ask questions, get help, or just have a friendly chat!
+          <p className=\"text-gray-600 max-w-2xl mx-auto\">
+            I'm here to help you discover your perfect nail look, recommend services and pricing, plan your visit, and provide expert nail care advice — all with elegance and care.
           </p>
-          <div className="flex items-center justify-center space-x-2 mt-4">
-            <Sparkles className="w-4 h-4 text-yellow-500" />
-            <span className="text-sm text-gray-500 font-medium">Powered by zai-org/GLM-4.5-Air</span>
+          <div className=\"flex items-center justify-center space-x-2 mt-4\">
+            <Sparkles className=\"w-4 h-4 text-gold-500\" />
+            <span className=\"text-sm text-gray-600 font-medium\">Powered by GLM-4.5-Air via Chutes AI</span>
           </div>
         </motion.div>
 
@@ -180,8 +205,8 @@ export default function ChatPage() {
                       className={cn(
                         "w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-md",
                         message.role === 'user'
-                          ? "bg-gradient-to-r from-blue-500 to-blue-600"
-                          : "bg-gradient-to-r from-purple-500 to-indigo-600"
+                          ? "bg-gradient-to-r from-gold-500 to-gold-600"
+                          : "bg-gradient-to-r from-gold-400 to-gold-500"
                       )}
                     >
                       {message.role === 'user' ? (
@@ -196,7 +221,7 @@ export default function ChatPage() {
                       className={cn(
                         "px-4 py-3 rounded-2xl shadow-sm",
                         message.role === 'user'
-                          ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white"
+                          ? "bg-gradient-to-r from-gold-500 to-gold-600 text-white"
                           : "bg-white border border-gray-200 text-gray-800"
                       )}
                     >
@@ -206,10 +231,10 @@ export default function ChatPage() {
                       <p
                         className={cn(
                           "text-xs mt-2 opacity-70",
-                          message.role === 'user' ? "text-blue-100" : "text-gray-500"
+                          message.role === 'user' ? "text-gold-100" : "text-warmgray-600"
                         )}
                       >
-                        {message.timestamp.toLocaleTimeString()}
+                        <span suppressHydrationWarning>{isHydrated ? message.timestamp.toLocaleTimeString() : ''}</span>
                       </p>
                     </div>
                   </div>
@@ -225,13 +250,13 @@ export default function ChatPage() {
                 className="flex justify-start"
               >
                 <div className="flex space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center shadow-md">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 flex items-center justify-center shadow-md">
                     <Bot className="w-5 h-5 text-white" />
                   </div>
-                  <div className="bg-white border border-gray-200 px-4 py-3 rounded-2xl shadow-sm">
+                  <div className="bg-white border border-gold-200 px-4 py-3 rounded-2xl shadow-sm">
                     <div className="flex items-center space-x-2">
                       <Loader2 className="w-4 h-4 animate-spin text-gray-500" />
-                      <span className="text-sm text-gray-500">AI is thinking...</span>
+                      <span className="text-sm text-warmgray-600">Bella is sketching ideas...</span>
                     </div>
                   </div>
                 </div>
@@ -269,7 +294,7 @@ export default function ChatPage() {
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message here... (Press Enter to send, Shift+Enter for new line)"
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-gray-50 text-gray-800 placeholder-gray-500"
+                className="flex-1 px-4 py-3 border border-gold-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent resize-none bg-ivory text-charcoal placeholder-warmgray-500"
                 disabled={isLoading}
                 rows={3}
               />
@@ -277,7 +302,7 @@ export default function ChatPage() {
                 <Button
                   onClick={sendMessage}
                   disabled={!inputText.trim() || isLoading}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-700 hover:from-gold-600 hover:to-gold-800 text-white rounded-2xl shadow-luxury hover:shadow-luxury-hover transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -288,7 +313,7 @@ export default function ChatPage() {
                 <Button
                   onClick={clearChat}
                   variant="outline"
-                  className="px-6 py-2 text-gray-600 border-gray-300 rounded-2xl hover:bg-gray-50"
+                  className="px-6 py-2 text-gold-700 border-gold-300 rounded-2xl hover:bg-gold-50"
                 >
                   Clear
                 </Button>

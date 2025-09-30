@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, Clock } from 'lucide-react'
 import { format, addDays, isSameDay, isToday, isTomorrow } from 'date-fns'
 import { cn } from '@/lib/utils'
-import { defaultTimeSlots } from '@/lib/constants/availability'
+import { getAvailableSlots } from '@/lib/constants/availability'
 import { slideUp } from '@/lib/animations'
 
 interface DateTimeSelectionProps {
@@ -16,7 +16,6 @@ interface DateTimeSelectionProps {
 }
 
 export function DateTimeSelection({ selectedDate, selectedTime, onDateTimeChange, duration }: DateTimeSelectionProps) {
-  const [currentMonth, setCurrentMonth] = useState(new Date())
 
   // Generate next 30 days for selection
   const availableDates = useMemo(() => {
@@ -27,15 +26,10 @@ export function DateTimeSelection({ selectedDate, selectedTime, onDateTimeChange
     return dates
   }, [])
 
-  // Mock availability - in production, this would check actual availability
-  const getAvailableSlots = (date: Date) => {
-    return defaultTimeSlots.map((time) => ({
-      time,
-      available: Math.random() > 0.3, // 70% availability
-    }))
-  }
+  // Deterministic availability to avoid hydration mismatches
+  const buildSlots = (date: Date) => getAvailableSlots(date, duration)
 
-  const availableSlots = selectedDate ? getAvailableSlots(selectedDate) : []
+  const availableSlots = selectedDate ? buildSlots(selectedDate) : []
 
   const getDateLabel = (date: Date) => {
     if (isToday(date)) return 'Today'

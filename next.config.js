@@ -1,34 +1,41 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable modern JavaScript features
-  swcMinify: true,
+  reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
   
+  // Performance optimizations
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
+
   // Image optimization
   images: {
-    domains: ['cdn.sanity.io', 'res.cloudinary.com'],
+    domains: ['images.unsplash.com'],
     formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-      },
-    ],
   },
-  
-  // Experimental features for Turbopack
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+
+  // Headers for security and performance
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
       },
-    },
+    ]
   },
 }
 

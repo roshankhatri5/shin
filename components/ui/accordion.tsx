@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { accordionContent } from '@/lib/animations'
-import { AccordionProps, AccordionItem } from '@/types/components'
+import { AccordionProps } from '@/types/components'
 
 export const Accordion: React.FC<AccordionProps> = ({
   items,

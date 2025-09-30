@@ -50,7 +50,7 @@ export function ServicesPreview() {
               <Link href={`/services/${service.slug}`}>
                 <motion.div
                   variants={hoverLift}
-                  className="bg-gradient-to-br from-white to-warmgray-50/30 rounded-3xl overflow-hidden shadow-soft hover:shadow-luxury transition-all duration-500 h-full flex flex-col border border-gold-200/20 hover:border-gold-300/40 backdrop-blur-sm"
+                  className="bg-gradient-to-br from-white to-warmgray-50/30 rounded-3xl overflow-hidden shadow-soft hover:shadow-elegant transition-all duration-500 h-full flex flex-col border border-gold-200/20 hover:border-gold-300/40 backdrop-blur-sm"
                 >
                   {/* Image */}
                   <div className="relative h-64 bg-gradient-to-br from-gold-100 to-gold-200 overflow-hidden">
@@ -60,7 +60,7 @@ export function ServicesPreview() {
                     <div className="absolute inset-0 bg-gradient-to-t from-gold-300/20 to-transparent"></div>
                     {service.popular && (
                       <div className="absolute top-4 right-4">
-                        <Badge className="bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-luxury animate-pulse-glow border-0">
+                        <Badge className="bg-gold-500 text-white shadow-elegant border-0">
                           ⭐ Popular
                         </Badge>
                       </div>

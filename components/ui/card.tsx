@@ -6,15 +6,17 @@ import { cn } from '@/lib/utils'
 import { CardProps } from '@/types/components'
 
 const cardVariants = {
-  default: 'bg-white shadow-glass-subtle hover:shadow-elegant hover:-translate-y-1',
-  elevated: 'bg-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-2',
-  bordered: 'bg-gradient-to-br from-white to-ivory-50 border-2 border-pink-200 hover:border-pink-300 hover:shadow-luxury',
-  glass: 'bg-white/85 backdrop-blur-lg border border-ivory-200/50 shadow-glass hover:bg-white/95 hover:shadow-elegant hover:-translate-y-1',
-  'glass-strong': 'bg-white/95 backdrop-blur-xl border border-ivory-200 shadow-glass hover:bg-white hover:shadow-luxury hover:-translate-y-1',
-  luxury: 'bg-gradient-to-br from-white via-ivory-50 to-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-3 border border-pink-100',
-  shimmer: 'bg-gradient-to-br from-white to-ivory-50 shadow-luxury hover:shadow-shimmer relative overflow-hidden',
-  elegant: 'bg-gradient-soft shadow-elegant hover:shadow-luxury hover:-translate-y-2 border border-ivory-200',
-  soft: 'bg-white/90 backdrop-blur-sm shadow-soft hover:shadow-elegant hover:-translate-y-1 border border-ivory-100',
+  default: 'bg-white shadow-glass-subtle hover:shadow-elegant hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300',
+  elevated: 'bg-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300',
+  bordered: 'bg-gradient-to-br from-white to-pink-50/30 border-2 border-pink-200/50 hover:border-pink-300 hover:shadow-luxury hover:scale-[1.02] transition-all duration-300',
+  glass: 'bg-white/85 backdrop-blur-lg border border-pink-100/30 shadow-glass hover:bg-white/95 hover:shadow-elegant hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300',
+  'glass-strong': 'bg-white/95 backdrop-blur-xl border border-pink-200/40 shadow-glass hover:bg-white hover:shadow-luxury hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300',
+  luxury: 'bg-gradient-to-br from-white via-pink-50/20 to-white shadow-luxury hover:shadow-luxury-lg hover:-translate-y-3 hover:scale-[1.03] border border-pink-100/50 transition-all duration-500',
+  shimmer: 'bg-gradient-to-br from-white to-pink-50/30 shadow-luxury hover:shadow-shimmer relative overflow-hidden hover:scale-[1.02] transition-all duration-300',
+  elegant: 'bg-gradient-soft shadow-elegant hover:shadow-luxury hover:-translate-y-2 hover:scale-[1.02] border border-pink-200/40 transition-all duration-300',
+  soft: 'bg-white/90 backdrop-blur-sm shadow-soft hover:shadow-elegant hover:-translate-y-1 hover:scale-[1.01] border border-pink-100/40 transition-all duration-300',
+  girly: 'bg-gradient-to-br from-white via-pink-50/40 to-blush-50/30 shadow-elegant hover:shadow-luxury hover:-translate-y-2 hover:scale-[1.03] border border-pink-200/60 transition-all duration-300',
+  feminine: 'bg-gradient-warm shadow-soft hover:shadow-luxury hover:-translate-y-1 hover:scale-[1.02] border border-blush-200/50 transition-all duration-300',
 }
 
 const cardPadding = {

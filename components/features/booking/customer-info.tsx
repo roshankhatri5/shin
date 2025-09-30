@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion } from 'framer-motion'
-import { User, Mail, Phone, MessageSquare } from 'lucide-react'
+import { User, Mail, Phone } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { FormField } from '@/components/ui/form-field'
@@ -41,7 +41,7 @@ export function CustomerInfo({ initialData, onSubmit }: CustomerInfoProps) {
         <h2 className="font-display text-3xl text-charcoal mb-3">
           Your Information
         </h2>
-        <p className="text-charcoal-light">
+        <p className="text-charcoal/70">
           Please provide your contact information so we can confirm your appointment.
         </p>
       </div>

@@ -109,7 +109,7 @@ export default function OffersPage() {
 
                     {/* Valid Dates */}
                     <div className="mb-4 text-sm text-charcoal-light">
-                      <p>Valid until: {new Date(offer.validUntil).toLocaleDateString()}</p>
+                      <p>Valid until: <span suppressHydrationWarning>{new Date(offer.validUntil).toISOString().slice(0,10)}</span></p>
                       {offer.code && (
                         <p className="mt-2">
                           Code: <span className="font-mono font-semibold text-charcoal">{offer.code}</span>

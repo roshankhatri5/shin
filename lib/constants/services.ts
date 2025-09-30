@@ -48,7 +48,7 @@ export const services: Service[] = [
     shortDescription: 'Traditional nail care with expert shaping and polish',
     fullDescription: 'Our classic manicure includes nail shaping, cuticle care, hand massage, and your choice of polish. Perfect for maintaining healthy, beautiful nails.',
     category: 'manicure',
-    image: '/images/services/classic-manicure.jpg',
+    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '1-1',
@@ -76,7 +76,7 @@ export const services: Service[] = [
     shortDescription: 'Long-lasting gel polish with UV/LED curing',
     fullDescription: 'Enjoy up to 2 weeks of chip-free, high-shine nails with our professional gel manicure service.',
     category: 'gel-polish',
-    image: '/images/services/gel-manicure.jpg',
+    image: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '2-1',
@@ -104,7 +104,7 @@ export const services: Service[] = [
     shortDescription: 'Luxurious foot treatment with massage and polish',
     fullDescription: 'Indulge in our signature spa pedicure featuring a relaxing soak, exfoliation, massage, and polish for beautifully pampered feet.',
     category: 'pedicure',
-    image: '/images/services/spa-pedicure.jpg',
+    image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '3-1',
@@ -132,7 +132,7 @@ export const services: Service[] = [
     shortDescription: 'Durable acrylic nail extensions for length and strength',
     fullDescription: 'Create the perfect nail length and shape with our professional acrylic extensions. Customizable length and design.',
     category: 'extensions',
-    image: '/images/services/acrylic-extensions.jpg',
+    image: 'https://images.unsplash.com/photo-1604902396830-aca29761a77a?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '4-1',
@@ -159,7 +159,7 @@ export const services: Service[] = [
     shortDescription: 'Custom nail art created by our talented artists',
     fullDescription: 'Express your creativity with custom nail art. From simple accents to intricate designs, our artists bring your vision to life.',
     category: 'nail-art',
-    image: '/images/services/nail-art.jpg',
+    image: 'https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '5-1',
@@ -187,7 +187,7 @@ export const services: Service[] = [
     shortDescription: 'Spa pedicure with long-lasting gel polish',
     fullDescription: 'Combine the luxury of our spa pedicure with the durability of gel polish for beautiful, chip-free toes.',
     category: 'pedicure',
-    image: '/images/services/gel-pedicure.jpg',
+    image: 'https://images.unsplash.com/photo-1619451334792-150bdee346f6?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '6-1',
@@ -207,7 +207,7 @@ export const services: Service[] = [
     shortDescription: 'Timeless elegance with classic French tips',
     fullDescription: 'The ultimate in elegant sophistication. Our French manicure features perfectly painted white tips for a classic, refined look.',
     category: 'manicure',
-    image: '/images/services/french-manicure.jpg',
+    image: 'https://images.unsplash.com/photo-1594608661623-f29eb6b99ba3?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '7-1',
@@ -234,7 +234,7 @@ export const services: Service[] = [
     shortDescription: 'Deep moisturizing treatment for hands or feet',
     fullDescription: 'Deeply moisturize and soften skin with our therapeutic paraffin wax treatment. Perfect add-on to any service.',
     category: 'spa-treatments',
-    image: '/images/services/paraffin-treatment.jpg',
+    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop',
     pricing: [
       {
         id: '8-1',

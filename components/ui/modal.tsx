@@ -105,7 +105,7 @@ export const Modal: React.FC<ModalProps> = ({
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-charcoal/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-charcoal/60 backdrop-blur-md"
             variants={modalOverlay}
             initial="initial"
             animate="animate"
@@ -117,8 +117,8 @@ export const Modal: React.FC<ModalProps> = ({
           <motion.div
             id="modal-content"
             className={cn(
-              'relative bg-white rounded-2xl shadow-luxury w-full',
-              'max-h-[90vh] overflow-y-auto',
+              'relative bg-gradient-to-br from-white to-pink-50/30 rounded-3xl shadow-luxury w-full',
+              'max-h-[90vh] overflow-y-auto border border-pink-200/40 backdrop-blur-sm',
               modalSizes[size],
               className
             )}
@@ -133,9 +133,9 @@ export const Modal: React.FC<ModalProps> = ({
               onClick={onClose}
               className={cn(
                 'absolute top-4 right-4 p-2 rounded-full',
-                'text-charcoal-light hover:text-charcoal hover:bg-cream-100',
-                'transition-colors duration-200',
-                'focus:outline-none focus:ring-2 focus:ring-rose-gold-300'
+                'text-warmgray-600 hover:text-pink-600 hover:bg-pink-50',
+                'transition-all duration-300 hover:scale-110',
+                'focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2'
               )}
               aria-label="Close modal"
             >

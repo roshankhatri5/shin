@@ -16,7 +16,7 @@ const navLinks = [
   { href: '/faq', label: 'FAQ' },
   { href: '/offers', label: 'Offers' },
   { href: '/gift-cards', label: 'Gift Cards' },
-  { href: '/chat', label: 'AI Chat' },
+  { href: '/chat', label: 'Bella AI' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -60,8 +60,8 @@ export function Navigation() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           isScrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-luxury border-b border-gold-200/30'
-            : 'bg-transparent'
+            ? 'bg-white/98 backdrop-blur-xl shadow-luxury border-b border-pink-300/40 ring-1 ring-pink-200/20'
+            : 'bg-gradient-to-b from-white/85 via-white/75 to-white/50 backdrop-blur-lg shadow-lg border-b border-white/30'
         )}
       >
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
@@ -74,18 +74,18 @@ export function Navigation() {
             >
               <Sparkles 
                 className={cn(
-                  'w-8 h-8 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 animate-pulse-glow',
-                  isScrolled ? 'text-gold-500' : 'text-white drop-shadow-lg'
+                  'w-8 h-8 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110',
+                  isScrolled ? 'text-pink-600' : 'text-charcoal drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]'
                 )} 
                 aria-hidden="true"
               />
               <span 
                 className={cn(
-                  'font-display text-2xl font-semibold transition-all duration-500',
-                  isScrolled ? 'text-charcoal' : 'text-white drop-shadow-lg'
+                  'font-script text-2xl font-semibold transition-all duration-500',
+                  isScrolled ? 'text-pink-600' : 'text-charcoal drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]'
                 )}
               >
-                Elegant Nails
+                Luxury Nail Studio
               </span>
             </Link>
 
@@ -96,20 +96,20 @@ export function Navigation() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'font-heading font-medium text-sm uppercase tracking-wide transition-all duration-300 relative group py-2 px-3 rounded-full',
+                    'font-heading font-medium text-sm uppercase tracking-wide transition-all duration-300 relative group py-2 px-4 rounded-full',
                     pathname === link.href
                       ? isScrolled 
-                        ? 'text-gold-600 font-semibold bg-gold-50' 
-                        : 'text-white font-semibold drop-shadow-md bg-white/10'
+                        ? 'text-pink-700 font-semibold bg-pink-100/80 shadow-soft border border-pink-200/50' 
+                        : 'text-charcoal font-semibold bg-white/90 shadow-soft border border-white/60 backdrop-blur-sm'
                       : isScrolled
-                        ? 'text-charcoal hover:text-gold-600 hover:bg-gold-50'
-                        : 'text-white/90 hover:text-white hover:drop-shadow-md hover:bg-white/10'
+                        ? 'text-charcoal hover:text-pink-700 hover:bg-pink-50 hover:shadow-soft'
+                        : 'text-charcoal/80 hover:text-charcoal hover:bg-white/80 hover:shadow-soft hover:backdrop-blur-sm'
                   )}
                 >
                   {link.label}
                   <span 
                     className={cn(
-                      'absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-gold-400 to-gold-600 transition-all duration-300 group-hover:w-3/4 rounded-full',
+                      'absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-blush-500 transition-all duration-300 group-hover:w-3/4 rounded-full',
                       pathname === link.href && 'w-3/4'
                     )}
                     aria-hidden="true"
@@ -122,11 +122,11 @@ export function Navigation() {
             <div className="hidden lg:block">
               <Link href="/booking">
                 <Button
-                  variant="elegant"
+                  variant="girly"
                   size="lg"
-                  className="rounded-full shadow-luxury hover:shadow-glow transform-gpu bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-white border-0 px-8 py-3 font-semibold transition-all duration-300 hover:scale-105"
+                  className="rounded-full shadow-luxury hover:shadow-luxury-hover transform-gpu text-white border-0 px-8 py-3 font-semibold transition-all duration-300 hover:scale-105 ring-1 ring-pink-300/30"
                 >
-                  ✨ Book Now
+                  Book Appointment
                 </Button>
               </Link>
             </div>
@@ -137,8 +137,8 @@ export function Navigation() {
               className={cn(
                 'lg:hidden p-3 rounded-xl transition-all duration-300 transform hover:scale-110',
                 isScrolled 
-                  ? 'text-charcoal hover:bg-ivory-200 hover:shadow-soft' 
-                  : 'text-white hover:bg-white/10 hover:backdrop-blur-sm'
+                  ? 'text-charcoal hover:bg-pink-50 hover:shadow-soft border border-pink-200/50' 
+                  : 'text-charcoal hover:bg-white/80 hover:backdrop-blur-sm border border-white/40 bg-white/60'
               )}
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
@@ -181,22 +181,22 @@ export function Navigation() {
                 stiffness: 200,
                 duration: 0.5
               }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-gradient-to-br from-white via-warmgray-50/50 to-gold-50/30 border-l border-gold-200/30 z-50 lg:hidden shadow-2xl overflow-y-auto backdrop-blur-xl"
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-gradient-to-br from-white via-pink-50/70 to-blush-50/50 border-l border-pink-300/40 z-50 lg:hidden shadow-2xl overflow-y-auto backdrop-blur-xl ring-1 ring-pink-200/30"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between px-6 py-6 border-b border-gold-200/30 bg-white/60 backdrop-blur-sm">
+                <div className="flex items-center justify-between px-6 py-6 border-b border-pink-300/40 bg-white/80 backdrop-blur-sm">
                   <Link 
                     href="/" 
                     className="flex items-center space-x-2 group"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Sparkles className="w-8 h-8 text-gold-500 group-hover:rotate-12 transition-transform duration-300 animate-pulse-glow" aria-hidden="true" />
-                    <span className="font-display text-2xl font-semibold text-charcoal">
-                      Elegant Nails
+                    <Sparkles className="w-8 h-8 text-pink-600 group-hover:rotate-12 transition-transform duration-300 animate-pulse-glow" aria-hidden="true" />
+                    <span className="font-script text-2xl font-semibold text-pink-600">
+                      Luxury Nail Studio
                     </span>
                   </Link>
                   <button
@@ -223,8 +223,8 @@ export function Navigation() {
                           className={cn(
                             'block px-5 py-4 rounded-xl font-heading font-medium text-lg transition-all duration-300 transform hover:scale-[1.02]',
                             pathname === link.href
-                              ? 'bg-gradient-to-r from-gold-50 to-gold-100 text-gold-700 shadow-soft border border-gold-200'
-                              : 'text-charcoal hover:bg-gradient-to-r hover:from-warmgray-50 hover:to-gold-50 hover:shadow-soft'
+                              ? 'bg-gradient-to-r from-pink-50 to-pink-100 text-pink-700 shadow-soft border border-pink-200'
+                              : 'text-charcoal hover:bg-gradient-to-r hover:from-warmgray-50 hover:to-pink-50 hover:shadow-soft'
                           )}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -236,15 +236,15 @@ export function Navigation() {
                 </nav>
 
                 {/* Mobile Menu Footer */}
-                <div className="px-6 py-8 border-t border-gold-200/30 bg-white/40 backdrop-blur-sm">
+                <div className="px-6 py-8 border-t border-pink-300/40 bg-white/60 backdrop-blur-sm">
                   <Link href="/booking" onClick={() => setIsMobileMenuOpen(false)} className="block mb-6">
                     <Button
-                      variant="elegant"
+                      variant="girly"
                       size="lg"
                       fullWidth
-                      className="rounded-xl shadow-luxury text-lg py-4 bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-white border-0 hover:scale-105 transition-all duration-300"
+                      className="rounded-xl shadow-luxury text-lg py-4 text-white border-0 hover:scale-105 transition-all duration-300"
                     >
-                      ✨ Book Appointment
+                      Book My Appointment
                     </Button>
                   </Link>
                   <div className="text-center space-y-3">

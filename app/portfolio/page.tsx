@@ -48,7 +48,7 @@ export default function PortfolioPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative bg-gradient-to-br from-rose-gold-50 via-blush-50 to-lavender-50 py-16 md:py-24">
+      <section className="relative bg-gradient-to-br from-pink/10 via-blush/10 to-rose/10 py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={slideUp}
@@ -58,9 +58,9 @@ export default function PortfolioPage() {
           >
             {/* Breadcrumb */}
             <nav className="flex justify-center mb-6" aria-label="Breadcrumb">
-              <ol className="flex items-center space-x-2 text-sm text-charcoal-light">
+              <ol className="flex items-center space-x-2 text-sm text-charcoal/70">
                 <li>
-                  <a href="/" className="hover:text-rose-gold transition-colors">
+                  <a href="/" className="hover:text-pink transition-colors">
                     Home
                   </a>
                 </li>
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">
               Our Portfolio
             </h1>
-            <p className="text-lg md:text-xl text-charcoal-light leading-relaxed">
+            <p className="text-lg md:text-xl text-charcoal/70 leading-relaxed">
               Explore our collection of stunning nail designs, from classic elegance to bold artistic expressions.
               Each piece represents our commitment to excellence and creativity.
             </p>
@@ -85,7 +85,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Gallery */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-16 md:py-24 bg-ivory">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filters */}
           <PortfolioFilters
@@ -106,7 +106,7 @@ export default function PortfolioPage() {
             transition={{ delay: 0.3 }}
             className="mt-12 text-center"
           >
-            <p className="text-charcoal-light">
+            <p className="text-charcoal/70">
               Showing <span className="font-semibold text-charcoal">{filteredItems.length}</span>{' '}
               {filteredItems.length === 1 ? 'design' : 'designs'}
               {activeCategory !== 'all' && (
@@ -120,7 +120,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-rose-gold to-rose-gold-600">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-pink to-pink-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -138,13 +138,13 @@ export default function PortfolioPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/booking"
-                className="inline-block px-8 py-4 bg-white text-rose-gold font-heading font-semibold text-lg rounded-full transition-all duration-300 shadow-luxury hover:shadow-luxury-hover hover:-translate-y-1"
+                className="inline-block px-8 py-4 bg-white text-pink font-heading font-semibold text-lg rounded-full transition-all duration-300 shadow-luxury hover:shadow-luxury-hover hover:-translate-y-1"
               >
                 Book Appointment
               </a>
               <a
                 href="/contact"
-                className="inline-block px-8 py-4 bg-transparent border-2 border-white text-white font-heading font-semibold text-lg rounded-full transition-all duration-300 hover:bg-white hover:text-rose-gold"
+                className="inline-block px-8 py-4 bg-transparent border-2 border-white text-white font-heading font-semibold text-lg rounded-full transition-all duration-300 hover:bg-white hover:text-pink"
               >
                 Contact Us
               </a>
