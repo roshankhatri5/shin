@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { Sparkles, MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react'
 import { NewsletterForm } from '@/components/features/footer/newsletter-form'
@@ -32,7 +30,7 @@ const salonHours = [
 ]
 
 export function Footer() {
-  const currentYear = typeof window !== 'undefined' ? new Date().getFullYear() : new Date().getUTCFullYear()
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer className="bg-charcoal text-white" role="contentinfo">

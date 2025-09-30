@@ -1,11 +1,12 @@
+
 # Luxury Nail Salon Website
 
-A modern, high-performance website for a luxury nail salon built with Next.js 14+, TypeScript, and Tailwind CSS.
+A modern, high-performance website for a luxury nail salon built with Next.js 14+, TypeScript, and Tailwind CSS. This comprehensive solution includes booking systems, service galleries, portfolio showcases, and admin capabilities.
 
 ## 🚀 Tech Stack
 
 ### Core Framework
-- **Next.js 14.2+** with App Router and Turbopack
+- **Next.js 15+** with App Router and Turbopack
 - **React 18.3+** with Server Components
 - **TypeScript 5.4+** with strict mode
 
@@ -18,6 +19,10 @@ A modern, high-performance website for a luxury nail salon built with Next.js 14
 - **React Hook Form 7+** for form management
 - **Zod 3+** for schema validation
 
+### Database & CMS
+- **Supabase** (PostgreSQL) with Drizzle ORM
+- **Sanity CMS** for content management
+
 ### Utilities
 - **date-fns** for date manipulation
 - **clsx** & **tailwind-merge** for class management
@@ -27,43 +32,82 @@ A modern, high-performance website for a luxury nail salon built with Next.js 14
 
 - Node.js 18.x or higher
 - npm, yarn, or pnpm
+- Git
+- A code editor (VS Code recommended)
 
 ## 🛠️ Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd luxury-nail-salon
-   ```
+### 1. Clone the repository
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   ```
+```bash
+git clone <repository-url>
+cd luxury-nail-salon
+```
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Fill in the required environment variables in `.env.local`
+### 2. Install dependencies
 
-4. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   ```
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
 
-5. **Open your browser**
-   
-   Navigate to [http://localhost:3000](http://localhost:3000)
+### 3. Set up environment variables
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in the required environment variables in `.env.local`:
+
+```env
+# Database
+DATABASE_URL="your_supabase_database_url"
+DIRECT_URL="your_supabase_direct_url"
+
+# Sanity CMS
+NEXT_PUBLIC_SANITY_PROJECT_ID="your_sanity_project_id"
+NEXT_PUBLIC_SANITY_DATASET="your_dataset_name"
+SANITY_API_TOKEN="your_sanity_api_token"
+
+# Authentication
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your_nextauth_secret"
+GOOGLE_CLIENT_ID="your_google_client_id"
+GOOGLE_CLIENT_SECRET="your_google_client_secret"
+
+# Stripe (for payments)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="your_stripe_publishable_key"
+STRIPE_SECRET_KEY="your_stripe_secret_key"
+STRIPE_WEBHOOK_SECRET="your_stripe_webhook_secret"
+
+# Email
+RESEND_API_KEY="your_resend_api_key"
+
+# Optional services
+CLOUDINARY_CLOUD_NAME="your_cloudinary_cloud_name"
+CLOUDINARY_API_KEY="your_cloudinary_api_key"
+CLOUDINARY_API_SECRET="your_cloudinary_api_secret"
+
+# Analytics
+NEXT_PUBLIC_VERCEL_ANALYTICS_ID="your_analytics_id"
+```
+
+### 4. Run the development server
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+### 5. Open your browser
+
+Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 🏗️ Project Structure
 
@@ -72,19 +116,28 @@ luxury-nail-salon/
 ├── app/                    # Next.js App Router
 │   ├── globals.css        # Global styles
 │   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Homepage
+│   ├── loading.tsx        # Global loading state
+│   ├── page.tsx           # Homepage
+│   ├── about/            # About page
+│   ├── booking/          # Booking system
+│   ├── contact/          # Contact page
+│   ├── services/         # Services page
+│   ├── portfolio/        # Portfolio gallery
+│   └── api/              # API routes
 ├── components/            # React components
 │   ├── ui/               # Reusable UI components
 │   ├── features/         # Feature-specific components
 │   └── layouts/          # Layout components
 ├── lib/                  # Utility functions
+│   ├── db/              # Database utilities
+│   ├── sanity/          # Sanity CMS utilities
+│   ├── stripe/          # Stripe payment utilities
 │   ├── utils.ts         # Common utilities
 │   └── constants/       # Constants and config
 ├── types/               # TypeScript type definitions
 ├── hooks/               # Custom React hooks
 ├── public/              # Static assets
 │   └── images/         # Image files
-├── styles/              # Additional styles
 └── [config files]       # Configuration files
 ```
 
@@ -127,104 +180,151 @@ npm run lint
 
 # Type check
 npm run type-check
+
+# Run tests
+npm run test
+
+# Format code with Prettier
+npm run format
+
+# Run all checks (lint, type-check, test)
+npm run check
 ```
 
-## 🔧 Development
+## 🚀 Usage Examples
 
-### Using Turbopack
-This project is configured to use Turbopack for faster development builds. The `dev` script automatically uses the `--turbo` flag.
+### 1. Adding a new service
 
-### Path Aliases
-The project uses TypeScript path aliases for cleaner imports:
-- `@/*` - Root directory
-- `@/components/*` - Components directory
-- `@/lib/*` - Library utilities
-- `@/types/*` - Type definitions
+Create a new service in Sanity CMS with the following structure:
 
-Example:
 ```typescript
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/Button'
+// Service content type in Sanity
+{
+  _type: 'service',
+  name: 'Luxury Gel Manicure',
+  slug: { current: 'luxury-gel-manicure' },
+ shortDescription: 'Premium gel polish application with nail care',
+  fullDescription: [
+    {
+      _type: 'block',
+      children: [
+        {
+          _type: 'span',
+          text: 'Experience our premium gel manicure service featuring high-quality products and expert application.'
+        }
+      ]
+    }
+ ],
+  category: 'manicure',
+  images: [/* array of Sanity image objects */],
+  pricing: [
+    {
+      name: 'Standard',
+      price: 45,
+      description: 'Basic gel application',
+      includes: ['Nail shaping', 'Cuticle care', 'Gel polish application']
+    },
+    {
+      name: 'Deluxe',
+      price: 65,
+      description: 'Premium gel with nail art',
+      includes: ['Nail shaping', 'Cuticle care', 'Gel polish application', 'Simple nail art']
+    }
+  ],
+  duration: { min: 45, max: 60 }, // in minutes
+ features: ['Organic products', 'Luxury experience', 'Long-lasting'],
+  availability: 'always',
+  popularityScore: 95
+}
 ```
 
-### Adding Components
-1. Create component in appropriate directory (`ui/`, `features/`, or `layouts/`)
-2. Use TypeScript for type safety
-3. Follow the naming convention: `ComponentName.tsx`
-4. Export from index file if needed
+### 2. Customizing the booking flow
 
-### Styling Guidelines
-- Use Tailwind utility classes
-- Leverage custom design tokens from `tailwind.config.ts`
-- Use the `cn()` utility for conditional classes
-- Follow mobile-first responsive design
+The booking system is built with a multi-step wizard:
 
-## 🚀 Deployment
+```typescript
+// Example of booking state management
+import { useBooking } from '@/hooks/useBooking'
 
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Configure environment variables
-4. Deploy
+function BookingPage() {
+  const {
+    selectedServices,
+    selectedDate,
+    selectedTimeSlot,
+    selectedStaff,
+    customerInfo,
+    addService,
+    removeService,
+    setDateTime,
+    setStaff,
+    setCustomerInfo,
+    submitBooking,
+    reset
+ } = useBooking()
 
-### Other Platforms
-The app can be deployed to any platform that supports Next.js:
-- Netlify
-- AWS Amplify
-- Railway
-- Self-hosted with Docker
+ // Use the state and actions in your component
+  return (
+    <div className="booking-wizard">
+      {/* Step 1: Service Selection */}
+      <ServiceSelection 
+        selected={selectedServices}
+        onSelect={addService}
+        onRemove={removeService}
+      />
+      
+      {/* Step 2: Date & Time */}
+      <DateTimeSelection 
+        date={selectedDate}
+        onDateChange={setDateTime}
+        availableSlots={/* fetched from API */}
+      />
+      
+      {/* Step 3: Staff Selection */}
+      <StaffSelection 
+        selected={selectedStaff}
+        onSelect={setStaff}
+        staff={/* fetched from API */}
+      />
+      
+      {/* Step 4: Customer Information */}
+      <CustomerInfo 
+        info={customerInfo}
+        onChange={setCustomerInfo}
+      />
+      
+      {/* Step 5: Confirmation */}
+      <BookingSummary 
+        services={selectedServices}
+        date={selectedDate}
+        time={selectedTimeSlot}
+        staff={selectedStaff}
+        customer={customerInfo}
+        onSubmit={submitBooking}
+      />
+    </div>
+  )
+}
+```
 
-## 🎯 Roadmap
+### 3. Creating a custom UI component
 
-### Phase 1 - Foundation ✅
-- [x] Project setup with Next.js 14+
-- [x] Design system implementation
-- [x] Basic routing structure
-- [x] Homepage with hero section
+```tsx
+// components/ui/CustomButton.tsx
+import { cn } from '@/lib/utils'
+import { ButtonHTMLAttributes, forwardRef } from 'react'
 
-### Phase 2 - Core Features (Upcoming)
-- [ ] Service catalog with filtering
-- [ ] Booking system integration
-- [ ] Team member profiles
-- [ ] Portfolio gallery
-- [ ] Contact form
+interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
+  size?: 'sm' | 'md' | 'lg'
+  isLoading?: boolean
+}
 
-### Phase 3 - Advanced Features
-- [ ] User authentication
-- [ ] Customer dashboard
-- [ ] Admin panel
-- [ ] Email notifications
-- [ ] Payment integration
-
-### Phase 4 - CMS & Backend
-- [ ] Sanity CMS integration
-- [ ] Database setup (Supabase)
-- [ ] API routes
-- [ ] Real-time availability
-
-## 📚 Documentation
-
-For detailed technical specifications, see [`ARCHITECTURE_SPECIFICATION.md`](ARCHITECTURE_SPECIFICATION.md)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
-
-## 📄 License
-
-This project is private and proprietary.
-
-## 🙏 Acknowledgments
-
-- Design inspired by luxury spa and salon aesthetics
-- Built with modern web technologies and best practices
-- Optimized for performance and accessibility
-
----
-
-**Need help?** Contact the development team or refer to the architecture specification document.
+const CustomButton = forwardRef<HTMLButtonElement, CustomButtonProps>(
+  ({ className, variant = 'primary', size = 'md', isLoading, children, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          'font-heading font-semibold rounded-full transition-all duration-300 inline-flex items-center justify-center',
+          {
+            'bg-rose-gold text-white hover:bg-rose-gold-600 hover:shadow-lg hover:-translate-y-0.5': variant === 'primary',
