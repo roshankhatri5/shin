@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion'
 import { Gift, Heart, Sparkles, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { slideUp, staggerContainer } from '@/lib/animations'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 const giftCardAmounts = [
   { value: 25, popular: false },

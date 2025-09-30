@@ -1,7 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { Sparkles, MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import { NewsletterForm } from '@/components/features/footer/newsletter-form'
 
 const quickLinks = [
   { href: '/services', label: 'Services' },
@@ -31,7 +32,7 @@ const salonHours = [
 ]
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = typeof window !== 'undefined' ? new Date().getFullYear() : new Date().getUTCFullYear()
 
   return (
     <footer className="bg-charcoal text-white" role="contentinfo">
@@ -156,29 +157,7 @@ export function Footer() {
             <p className="text-white/80 text-body-sm mb-4">
               Subscribe for exclusive offers, beauty tips, and updates on new services.
             </p>
-            <form 
-              className="space-y-3"
-              onSubmit={(e) => {
-                e.preventDefault()
-                // Newsletter subscription logic will be added later
-              }}
-            >
-              <Input
-                type="email"
-                placeholder="Your email address"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-rose-gold"
-                required
-                aria-label="Email address for newsletter"
-              />
-              <Button
-                type="submit"
-                variant="primary"
-                size="md"
-                className="w-full bg-rose-gold hover:bg-rose-gold-600"
-              >
-                Subscribe
-              </Button>
-            </form>
+            <NewsletterForm />
             <p className="text-white/60 text-body-xs mt-3">
               We respect your privacy. Unsubscribe anytime.
             </p>
